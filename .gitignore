@@ -1,0 +1,5 @@
+**/script/  
+**/stuff/  
+**/.terraform
+**/*tfstate
+**/*tfstate*

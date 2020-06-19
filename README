@@ -1,0 +1,68 @@
+Folgende Schritte sind noe: (beispielhaft)
+- Installation terrafom && Installation aws-cli && ssh-keygen 
+- Check terraform && aws-cli
+# terraform version
+Terraform v0.12.26
+# aws --version
+aws-cli/2.0.13 Python/3.7.3 Linux/4.18.0-147.8.1.el8_1.x86_64 botocore/2.0.0dev17
+
+
+- Arbeitsverzeichnis (als Beispiel) 
+- Im Kontext des User mit den hinterlegten AWS-Credentials
+# ls ~/.aws
+config  credentials
+# mkdir -p ~/terraform/aws/stack
+
+
+- Die *tf-Files in das Verzeichnis kopieren
+- In der main.tf anpassen mit deinen Daten :
+//aws
+provider "aws" {
+  profile = "<your_profile>"     <- aws-cli profil eintragen
+  region  = "eu-central-1"
+}
+…
+
+
+
+- Ggf. in vars.tf die Anzahl der VM’s anpassen (rot)
+…
+variable "instance_count" {
+  description = "instance count"
+  default = "5"
+}
+…
+
+
+- Parallel schon mal die aws-console offen haben, zur Kontrolle
+- Deployment
+# cd ~/terraform/aws/stack
+# terraform init    (vorbereitung, nur einmalig)
+# terraform plan (nur einmalig, bzw. bei Änderung Code)
+# terraform apply -auto-approve  (keine interactive rückfrage, ansonsten ohne auto-approve)
+…
+
+
+- Im Output stehen die public ip’s (Beispiel)
+...
+public_ip = [
+  "3.121.208.78",
+  "18.184.134.11",
+  "54.93.103.10",
+  "3.120.134.9",
+  "52.58.253.216",
+]
+...
+
+
+- Jetzt mal in VPC/EC2 in der Konsole schauen
+- Login in eine Instanz
+# ssh -i ~/.ssh/id_rsa ec2-user@<public_ip>
+
+
+- UnDeployment
+# cd ~/terraform/aws/stack
+# terraform destroy -auto-approve
+
+- Jetzt mal in VPC/EC2 in der Konsole schauen, ob alles weg ist
+
