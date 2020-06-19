@@ -1,6 +1,6 @@
 //aws
 provider "aws" {
-  profile = "<your_profile>"
+  profile = "devops"
   region  = "eu-central-1"
 }
 
