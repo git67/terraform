@@ -21,7 +21,7 @@ module "stack" {
 
   instance_ami = "ami-0a02ee601d742e89f"
   instance_type = "t2.nano"
-  instance_count = "10"
+  instance_count = var.instance_count
 }
 
 output "vpc" {

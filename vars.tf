@@ -21,5 +21,5 @@ variable "instance_type" {
 
 variable "instance_count" {
   description = "instance count"
-  default = "10"
+  default = "1"
 }
