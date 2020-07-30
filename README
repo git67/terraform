@@ -1,5 +1,5 @@
-Folgende Schritte sind noe: (beispielhaft)
-- Installation terrafom && Installation aws-cli && ssh-keygen 
+The following steps are necessary:
+- Install terrafom && aws-cli && ssh-keygen (if needed)
 - Check terraform && aws-cli
 # terraform version
 Terraform v0.12.26
@@ -7,43 +7,31 @@ Terraform v0.12.26
 aws-cli/2.0.13 Python/3.7.3 Linux/4.18.0-147.8.1.el8_1.x86_64 botocore/2.0.0dev17
 
 
-- Arbeitsverzeichnis (als Beispiel) 
-- Im Kontext des User mit den hinterlegten AWS-Credentials
+- probe your aws secrets
 # ls ~/.aws
 config  credentials
-# mkdir -p ~/terraform/aws/stack
 
+- list configured profile
+# aws configure list --profile <your-profile-name>
 
-- Die *tf-Files in das Verzeichnis kopieren
-- In der main.tf anpassen mit deinen Daten :
-//aws
-provider "aws" {
-  profile = "<your_profile>"     <- aws-cli profil eintragen
-  region  = "eu-central-1"
-}
-…
+- probe connection to aws clous
+# aws ec2 describe-regions --profile <your-profile-name>
 
+- In certain circumstances, set your needed data in variables.tf (profile/region/count)
 
-
-- Ggf. in vars.tf die Anzahl der VM’s anpassen (rot)
-…
-variable "instance_count" {
-  description = "instance count"
-  default = "5"
-}
-…
-
-
-- Parallel schon mal die aws-console offen haben, zur Kontrolle
 - Deployment
-# cd ~/terraform/aws/stack
-# terraform init    (vorbereitung, nur einmalig)
-# terraform plan (nur einmalig, bzw. bei Änderung Code)
-# terraform apply -auto-approve  (keine interactive rückfrage, ansonsten ohne auto-approve)
+- Initalisiation of terraform environment
+# terraform init    
+
+- Probe your terraform code
+# terraform plan 
+
+- Run terraform without any interaction
+# terraform apply -auto-approve  
 …
 
 
-- Im Output stehen die public ip’s (Beispiel)
+- Have a look for public-ip's of ec2-instances
 ...
 public_ip = [
   "3.121.208.78",
@@ -55,14 +43,11 @@ public_ip = [
 ...
 
 
-- Jetzt mal in VPC/EC2 in der Konsole schauen
-- Login in eine Instanz
+- Probe ssh login into an instance 
 # ssh -i ~/.ssh/id_rsa ec2-user@<public_ip>
 
 
 - UnDeployment
-# cd ~/terraform/aws/stack
 # terraform destroy -auto-approve
 
-- Jetzt mal in VPC/EC2 in der Konsole schauen, ob alles weg ist
 
