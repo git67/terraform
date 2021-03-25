@@ -10,25 +10,24 @@ aws --version
 
 ```
 
-#### - probe your aws secrets
+#### - Probe your aws secrets
 ```
 ls ~/.aws
 ```
 
-#### - list configured profile
+#### - List configured profile
 ```
 aws configure list --profile <your-profile-name>
 
 ```
 
-#### - probe connection to aws clous
+#### - Probe connection to aws clous
 ```
 aws ec2 describe-regions --profile <your-profile-name>
 ```
 
 #### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
-#### - Deployment
-#### - Initalisiation of terraform environment
+#### - Initialisation of terraform environment
 ```
 terraform init
 ```
@@ -40,7 +39,7 @@ terraform plan
 
 #### - Run terraform without any interaction
 ```
-# terraform apply -auto-approve
+terraform apply -auto-approve
 ```
 
 #### - Have a look for public-ip's of ec2-instances
