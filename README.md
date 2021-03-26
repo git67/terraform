@@ -26,6 +26,11 @@ aws configure list --profile <your-profile-name>
 aws ec2 describe-regions --profile <your-profile-name>
 ```
 
+#### - you have to pull these repository
+```
+git clone https://github.com/git67/terraform@features/modules
+```
+
 #### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
 #### - Initialisation of terraform environment
 ```
