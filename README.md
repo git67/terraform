@@ -31,8 +31,8 @@ cd ./terraform
 ```
 
 #### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
-####### - variable "profile" -> aws cli profile
-####### - variable "instance_count"  -> count ec2 instances
+###### - variable "profile" -> aws cli profile
+###### - variable "instance_count"  -> count ec2 instances
 ```
 vim variables.tf
 ```
