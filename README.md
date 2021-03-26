@@ -31,10 +31,18 @@ cd ./terraform
 ```
 
 #### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
-###### - variable "profile" -> aws cli profile
 ###### - variable "instance_count"  -> count ec2 instances
 ```
-vim variables.tf
+vim vars.tf
+```
+###### - Place your profile name into main.tf:
+```
+//aws
+provider "aws" {
+  profile = "<your_profile>"     <- here
+  region  = "eu-central-1"
+}
+…
 ```
 #### - Initialisation of terraform environment
 ```
