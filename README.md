@@ -28,7 +28,8 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - you have to pull these repository
 ```
-git clone https://github.com/git67/terraform@features/modules
+git clone --branch features/modules https://github.com/git67/terraform.git ./terraform
+cd ./terraform
 ```
 
 #### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
