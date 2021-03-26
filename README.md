@@ -7,7 +7,6 @@
 ```
 terraform version
 aws --version
-
 ```
 
 #### - Probe your aws secrets
