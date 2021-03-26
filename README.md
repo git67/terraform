@@ -18,7 +18,6 @@ ls ~/.aws
 #### - List configured profile
 ```
 aws configure list --profile <your-profile-name>
-
 ```
 
 #### - Probe connection to aws clous
