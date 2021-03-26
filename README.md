@@ -43,6 +43,7 @@ terraform init
 
 #### - Probe your terraform code
 ```
+terraform validate
 terraform plan
 ```
 
