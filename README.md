@@ -26,15 +26,17 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - you have to pull these repository
 ```
-git clone --branch features/modules https://github.com/git67/terraform.git ./terraform
-cd ./terraform
+git clone --branch features/ec2_pub_priv https://github.com/git67/terraform.git ./ec2_pub_priv
+cd ./ec2_pub_priv
 ```
 
-#### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
+#### - In certain circumstances, set your needed data in vars_aws.tf (profile/region)
 ###### - variable "profile" -> aws cli profile
+#### - vars_stack.tf (instance_count)
 ###### - variable "instance_count"  -> count ec2 instances
 ```
-vim variables.tf
+vim vars_aws.tf
+vim vars_stack.tf
 ```
 #### - Initialisation of terraform environment
 ```
