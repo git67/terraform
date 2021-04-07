@@ -2,44 +2,28 @@ terraform {
   required_version = ">= 0.12"
 }
 
-//aws
+#aws
 provider "aws" {
   profile = var.profile
   region  = var.region
 }
 
-//vpc
+#vpc
 module "stack" {
   source = "./modules/stack"
 
-  vpc_name = join("_",[var.server_type, "vpc"])
+  vpc_name = join("_",[var.team, "vpc"])
   vpc_cidr = var.vpc_cidr
-  server_type = var.server_type
+  team = var.team
 
-  subnet_name = join("_",[var.server_type, "subnet"])
-  subnet_cidr = var.subnet_cidr
-  subnet_availability_zone = var.subnet_availability_zone
+  pub_subnet_name = join("_",[var.team, "pub_subnet"])
+  pub_subnet_cidr = var.pub_subnet_cidr
+  pub_subnet_availability_zone = var.pub_subnet_availability_zone
 
-  public_key_path= var.public_key_path
-  keypair_name= join("_",[var.server_type, "keypair"])
+  ssh_key_file= var.ssh_key_file
+  keypair_name= join("_",[var.team, "keypair"])
 
-  instance_ami = var.instance_ami
-  instance_type = var.instance_type
-  instance_count = var.instance_count
-}
-
-output "vpc" {
-    value = join(" : ",[module.stack.vpc_id, module.stack.vpc_cidr_block])
-}
-
-output "subnet" {
-    value = join(" : ",[module.stack.subnet_id, module.stack.subnet_cidr_block])
-}
-
-output "ec2_id" {
-    value = module.stack.ec2_id
-}
-
-output "ec2_ip" {
-    value = module.stack.ec2_public_ip
+  pub_instance_ami = var.pub_instance_ami
+  pub_instance_type = var.pub_instance_type
+  pub_instance_count = var.pub_instance_count
 }

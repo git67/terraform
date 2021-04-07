@@ -1,7 +1,7 @@
 //security group
-resource "aws_security_group" "devops" {
-  name = "sg_devops"
-  vpc_id = aws_vpc.devops.id
+resource "aws_security_group" "pub" {
+  name = "sg_pub"
+  vpc_id = aws_vpc.global.id
   ingress {
       from_port   = 22
       to_port     = 22
@@ -15,7 +15,7 @@ resource "aws_security_group" "devops" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    server_type = var.server_type
+    team = var.team
   }
 }
 
