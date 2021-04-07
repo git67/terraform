@@ -7,6 +7,7 @@ resource "aws_route_table" "pub" {
     }
   tags = {
     team = var.team
+    Name = join("_",[var.team, "pub_rtb"])
     }
 }
 

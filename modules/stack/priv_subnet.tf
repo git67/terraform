@@ -5,7 +5,7 @@ resource "aws_subnet" "priv" {
   map_public_ip_on_launch = "false"
   availability_zone = var.priv_subnet_availability_zone
   tags = {
-    Name = var.priv_subnet_name
+    Name = join("_",[var.team, "priv_subnet"])
     team = var.team
   }
 }

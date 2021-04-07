@@ -8,6 +8,17 @@ resource "aws_instance" "pub" {
   count = var.pub_instance_count
  tags = {
   team = var.team
+  Name = join("_",[var.team, "pub_ec2", count.index])
  }
+ provisioner "file" {
+  source      = "~/.ssh/id_rsa"
+  destination = "~/.ssh/priv_ec2"
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = "~/.ssh/id_rsa"
+    host        = self.public_dns
+    }
+  }
 }
 

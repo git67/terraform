@@ -1,3 +1,12 @@
+# aws profile/aws region
+variable "profile" {
+  description = "profile aws-cli"
+  default = "devops"
+}
+variable "region" {
+  description = "region aws-cli"
+  default = "eu-central-1"
+}
 # globals
 # naming
 variable "team" {
@@ -29,10 +38,6 @@ variable "keypair_name" {
 
 
 # public
-variable "pub_subnet_name" {
-  description = "name of public subnet -> build in main.tf"
-  default = "NONE"
-}
 variable "pub_instance_ami" {
   description = "pub_aws ami - image id"
   default = "ami-0a02ee601d742e89f"
@@ -56,10 +61,6 @@ variable "pub_subnet_availability_zone" {
 
 
 # private
-variable "priv_subnet_name" {
-  description = "name of private subnet -> build in main.tf"
-  default = "NONE"
-}
 variable "priv_instance_ami" {
   description = "priv_aws ami - image id"
   default = "ami-0a02ee601d742e89f"
@@ -76,7 +77,7 @@ variable "priv_instance_count" {
 
 variable "priv_subnet_cidr" {
   description = "priv_subnet_cidr"
-  default = "10.0.1.0/24"
+  default = "10.0.2.0/24"
 }
 
 variable "priv_subnet_availability_zone" {

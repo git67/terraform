@@ -1,6 +1,6 @@
 //security group
 resource "aws_security_group" "pub" {
-  name = "sg_pub"
+  name = join("_",[var.team, "sg_pub"])
   vpc_id = aws_vpc.global.id
   ingress {
       from_port   = 22
@@ -16,6 +16,7 @@ resource "aws_security_group" "pub" {
   }
   tags = {
     team = var.team
+    Name = join("_",[var.team, "sg_pub"])
   }
 }
 

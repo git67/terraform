@@ -8,6 +8,7 @@ resource "aws_instance" "priv" {
   count = var.priv_instance_count
  tags = {
   team = var.team
+  Name = join("_",[var.team, "priv_ec2", count.index])
  }
 }
 

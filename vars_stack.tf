@@ -29,10 +29,6 @@ variable "keypair_name" {
 
 
 # public
-variable "pub_subnet_name" {
-  description = "name of public subnet -> build in main.tf"
-  default = "NONE"
-}
 variable "pub_instance_ami" {
   description = "pub_aws ami - image id"
   default = "ami-0a02ee601d742e89f"
@@ -56,10 +52,6 @@ variable "pub_subnet_availability_zone" {
 
 
 # private
-variable "priv_subnet_name" {
-  description = "name of private subnet -> build in main.tf"
-  default = "NONE"
-}
 variable "priv_instance_ami" {
   description = "priv_aws ami - image id"
   default = "ami-0a02ee601d742e89f"

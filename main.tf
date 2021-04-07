@@ -19,14 +19,12 @@ module "stack" {
   ssh_key_file= var.ssh_key_file
   keypair_name= join("_",[var.team, "keypair"])
 
-  pub_subnet_name = join("_",[var.team, "pub_subnet"])
   pub_subnet_cidr = var.pub_subnet_cidr
   pub_subnet_availability_zone = var.pub_subnet_availability_zone
   pub_instance_ami = var.pub_instance_ami
   pub_instance_type = var.pub_instance_type
   pub_instance_count = var.pub_instance_count
 
-  priv_subnet_name = join("_",[var.team, "priv_subnet"])
   priv_subnet_cidr = var.priv_subnet_cidr
   priv_subnet_availability_zone = var.priv_subnet_availability_zone
   priv_instance_ami = var.priv_instance_ami

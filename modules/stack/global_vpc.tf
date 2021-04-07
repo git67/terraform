@@ -1,4 +1,3 @@
-
 //vpc
 resource "aws_vpc" "global" {
   cidr_block = var.vpc_cidr

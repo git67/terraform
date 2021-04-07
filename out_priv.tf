@@ -9,3 +9,5 @@ output "priv_ec2_id" {
 output "priv_ec2_ip" {
     value = module.stack.priv_ec2_private_ip
 }
+
+
