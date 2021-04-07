@@ -13,12 +13,13 @@ resource "aws_instance" "pub" {
  provisioner "file" {
   source      = "~/.ssh/id_rsa"
   destination = "~/.ssh/priv_ec2"
+
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = "~/.ssh/id_rsa"
+    private_key = file("~/.ssh/id_rsa")
     host        = self.public_dns
-    }
+   }
   }
 }
 
