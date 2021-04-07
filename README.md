@@ -30,9 +30,8 @@ git clone --branch features/ec2_pub_priv https://github.com/git67/terraform.git 
 cd ./ec2_pub_priv
 ```
 
-#### - In certain circumstances, set your needed data in vars_aws.tf (profile/region)
+#### - In certain circumstances, set your needed data in vars_aws.tf/vars_stack.tf
 ###### - variable "profile" -> aws cli profile
-#### - vars_stack.tf (instance_count)
 ###### - variable "instance_count"  -> count ec2 instances
 ```
 vim vars_aws.tf
