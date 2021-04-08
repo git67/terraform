@@ -24,7 +24,7 @@ aws configure list --profile <your-profile-name>
 aws ec2 describe-regions --profile <your-profile-name>
 ```
 
-#### - You have to pull these repository
+#### - You have to pull the repository from github
 ```
 git clone --branch features/ec2_pub_priv https://github.com/git67/terraform.git ./ec2_pub_priv
 cd ./ec2_pub_priv
