@@ -8,7 +8,10 @@ variable "ssh_key_file" {
   description = "ssh pub-key file"
   default = "~/.ssh/id_rsa.pub"
 }
-
+variable "ssh_private_key_file" {
+  description = "ssh private key file"
+  default = "~/.ssh/id_rsa"
+}
 
 # vpc
 variable "vpc_cidr" {

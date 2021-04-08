@@ -11,13 +11,13 @@ resource "aws_instance" "pub" {
   Name = join("_",[var.team, "pub_ec2", count.index])
  }
  provisioner "file" {
-  source      = "~/.ssh/id_rsa"
+  source      = var.ssh_private_key_file
   destination = "~/.ssh/priv_ec2"
 
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("~/.ssh/id_rsa")
+    private_key = file(var.ssh_private_key_file)
     host        = self.public_dns
    }
   }

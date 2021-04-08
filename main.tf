@@ -16,8 +16,9 @@ module "stack" {
   vpc_cidr = var.vpc_cidr
   team = var.team
 
-  ssh_key_file= var.ssh_key_file
-  keypair_name= join("_",[var.team, "keypair"])
+  ssh_key_file = var.ssh_key_file
+  keypair_name = join("_",[var.team, "keypair"])
+  ssh_private_key_file = var.ssh_private_key_file
 
   pub_subnet_cidr = var.pub_subnet_cidr
   pub_subnet_availability_zone = var.pub_subnet_availability_zone
