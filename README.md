@@ -24,21 +24,21 @@ aws configure list --profile <your-profile-name>
 aws ec2 describe-regions --profile <your-profile-name>
 ```
 
-#### - you have to pull these repository
+#### - You have to pull these repository
 ```
 git clone --branch features/ec2_pub_priv https://github.com/git67/terraform.git ./ec2_pub_priv
 cd ./ec2_pub_priv
 ```
 
-#### - In certain circumstances, set aws-profile data in vars_aws.tf
+#### - Set aws profile data in vars_aws.tf, if it is not the default profile
 ```
 vim vars_aws.tf
 ```
-#### - set your stack environment (count of ec2 instanzes, cidr's) or leave the default's
+#### - Customize your stack environment (count of ec2 instanzes, cidr's, ...) or leave the default's
 ```
 vim vars_stack.tf
 ```
-#### - Initialisation of terraform environment
+#### -Run the initialisation of terraform environment
 ```
 terraform init
 ```
@@ -49,7 +49,7 @@ terraform validate
 terraform plan
 ```
 
-#### - Run terraform without any interaction
+#### - Run terraform without any interaction, build your environment@aws
 ```
 terraform apply -auto-approve
 ```
@@ -61,13 +61,13 @@ public_ip = [
 ...
 ```
 
-#### - Probe ssh login into an instance
+#### - Probe ssh login into an instance (or use the public key given in vars_stack.tf)
 ```
-ssh -i ~/.ssh/id_rsa ec2-user@<public_ip>
+ssh ec2-user@<public_ip>
 ```
 
 
-#### - Undeployment
+#### - Destroy your environment@aws
 ```
 terraform destroy -auto-approve
 ```
