@@ -1,4 +1,4 @@
-//private subnet 
+#private subnet 
 resource "aws_subnet" "priv" {
   vpc_id = aws_vpc.global.id
   cidr_block = var.priv_subnet_cidr

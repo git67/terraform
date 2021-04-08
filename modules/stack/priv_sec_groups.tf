@@ -1,4 +1,4 @@
-//security group
+#security group
 resource "aws_security_group" "priv" {
   name = join("_",[var.team, "sg_priv"])
   vpc_id = aws_vpc.global.id
