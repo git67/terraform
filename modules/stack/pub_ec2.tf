@@ -38,7 +38,7 @@ resource "aws_instance" "pub" {
  provisioner "remote-exec" {
    inline = [
       "chmod 755 /tmp/pub_script.sh",
-      "/tmp/pub_script.sh"
+      "sudo /tmp/pub_script.sh ~/.ssh/priv_ec2"
    ]
   connection {
     type        = "ssh"
