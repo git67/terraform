@@ -20,6 +20,7 @@ module "stack" {
   keypair_name = join("_",[var.team, "keypair"])
   ssh_private_key_file = var.ssh_private_key_file
 
+  pub_script = var.pub_script
   pub_subnet_cidr = var.pub_subnet_cidr
   pub_subnet_availability_zone = var.pub_subnet_availability_zone
   pub_instance_ami = var.pub_instance_ami

@@ -32,6 +32,10 @@ variable "keypair_name" {
 
 
 # public
+variable "pub_script" {
+  description = "first boot script"
+  default = "scripts/pub_script.sh"
+}
 variable "pub_instance_ami" {
   description = "pub_aws ami - image id"
   default = "ami-0a02ee601d742e89f"
