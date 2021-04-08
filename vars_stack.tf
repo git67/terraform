@@ -13,7 +13,7 @@ variable "ssh_key_file" {
 # vpc
 variable "vpc_cidr" {
   description = "vpc_cidr"
-  default = "10.0.0.0/16"
+  default = "128.0.0.0/16"
 }
 variable "vpc_name" {
   description = "vpc name -> build in main.tf"
@@ -43,7 +43,7 @@ variable "pub_instance_count" {
 }
 variable "pub_subnet_cidr" {
   description = "pub_subnet_cidr"
-  default = "10.0.1.0/24"
+  default = "128.0.0.0/19"
 }
 variable "pub_subnet_availability_zone" {
   description = "pub_subnet_availability_zone"
@@ -68,7 +68,7 @@ variable "priv_instance_count" {
 
 variable "priv_subnet_cidr" {
   description = "priv_subnet_cidr"
-  default = "10.0.2.0/24"
+  default = "128.0.32.0/19"
 }
 
 variable "priv_subnet_availability_zone" {
