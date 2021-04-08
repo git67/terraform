@@ -19,7 +19,7 @@ ls ~/.aws
 aws configure list --profile <your-profile-name>
 ```
 
-#### - Probe connection to aws clous
+#### - Probe connection to aws cloud
 ```
 aws ec2 describe-regions --profile <your-profile-name>
 ```
