@@ -1,9 +1,10 @@
 ## Scope (default)
 #### - VPC with 2 subnet (pub/priv)
 #### - 1 ec2 instance in every subnet
+#### - Network parts 
 #### - Allow public access through tcp/22, tcp/8080
 #### - Allow private access through tcp/22, icmp 
-#### - Network parts 
+#### - Add simple shell hook
 
 
 ## The following steps are necessary:
