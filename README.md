@@ -4,7 +4,7 @@
 #### - Network parts 
 #### - Allow public access through tcp/22, tcp/8080
 #### - Allow private access through tcp/22, icmp 
-#### - Add simple shell hook
+#### - Add simple shell hook, simple !
 
 
 ## The following steps are necessary:
