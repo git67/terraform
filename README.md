@@ -30,11 +30,12 @@ git clone --branch features/ec2_pub_priv https://github.com/git67/terraform.git 
 cd ./ec2_pub_priv
 ```
 
-#### - In certain circumstances, set your needed data in vars_aws.tf/vars_stack.tf
-###### - variable "profile" -> aws cli profile
-###### - variable "instance_count"  -> count ec2 instances
+#### - In certain circumstances, set aws-profile data in vars_aws.tf
 ```
 vim vars_aws.tf
+```
+#### - set your stack environment (count of ec2 instanzes, cidr's) or leave the default's
+```
 vim vars_stack.tf
 ```
 #### - Initialisation of terraform environment
