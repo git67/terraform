@@ -2,7 +2,9 @@
 #### - VPC with 2 subnet (pub/priv)
 #### - 1 ec2 instance in every subnet
 #### - Allow public access through tcp/22, tcp/8080
-#### - Allow private access through tcp/22, icmp \\
+#### - Allow private access through tcp/22, icmp 
+#### - Network parts 
+
 
 ## The following steps are necessary:
 #### - Install terrafom && aws-cli && ssh-keygen (if needed)
