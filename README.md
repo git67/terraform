@@ -35,6 +35,7 @@ aws ec2 describe-regions --profile <your-profile-name>
 ```
 git clone --branch features/ec2_pub_priv https://github.com/git67/terraform.git ./ec2_pub_priv
 cd ./ec2_pub_priv
+. .env
 ```
 
 #### - Set aws profile data in vars_aws.tf, if it is not the default profile
