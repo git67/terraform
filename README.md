@@ -69,6 +69,11 @@ public_ip = [
 ...
 ```
 
+#### - For further processing a host file with the created instances is stored in ./etc
+```
+less ./etc/hosts
+```
+
 #### - Probe ssh login into an instance (or use the public key given in vars_stack.tf)
 ```
 ssh ec2-user@<public_ip>
