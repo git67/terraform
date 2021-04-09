@@ -2,15 +2,17 @@
 
 PRIV_KEY=${1:-"NONE"}
 TIME_OUT=60
+FINAL_WAIT_DELAY=5
 
 _wait_for_finish()
 {
 until [ -f /var/lib/cloud/instance/boot-finished ]
 do
   COUNT=$(( ${COUNT} + 1 ))
-  [ ${COUNT} -gt ${TIME_OUT} ] && exit 1
+  [ ${COUNT} -gt ${1} ] && exit 1
   sleep 1
 done
+sleep ${2}
 }
 
 _add_ssh_agent()
@@ -34,7 +36,7 @@ sudo systemctl start httpd
 
 
 # main
-_wait_for_finish
+_wait_for_finish ${TIME_OUT} ${FINAL_WAIT_DELAY}
 _add_ssh_agent ${PRIV_KEY}
 _add_apache
 

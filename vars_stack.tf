@@ -51,7 +51,7 @@ variable "pub_instance_type" {
 }
 variable "pub_instance_count" {
   description = "pub_instance count"
-  default = "1"
+  default = "2"
 }
 variable "pub_subnet_cidr" {
   description = "pub_subnet_cidr"
