@@ -13,10 +13,10 @@ fi
 
 _add_apache()
 {
-yum install http -y
-sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf
-echo "hi world" >> /var/www/html/index.html
-systemctl start httpd
+sudo yum install http -y
+sudo sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf
+sudo echo "hi world" >> /var/www/html/index.html
+sudo systemctl start httpd
 }
 
 
