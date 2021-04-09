@@ -15,7 +15,7 @@ resource "aws_instance" "priv" {
     command = <<-EOC
       /usr/bin/mkdir -p ${var.out_dir}
       [ -f ${var.out_dir}/hosts ] && /usr/bin/sed -i "/ ${self.tags["Name"]} /d" ${var.out_dir}/hosts
-      /usr/bin/echo "${self.private_ip} ${self.tags["Name"]} ${self.private_dns} # only from inside the cloud accessible " >> ${var.out_dir}/hosts
+      /usr/bin/echo "${self.private_ip} ${self.tags["Name"]} ${self.private_dns} # only accessible within the vpc " >> ${var.out_dir}/hosts
     EOC
   }
 }
