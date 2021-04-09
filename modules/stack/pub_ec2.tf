@@ -5,7 +5,6 @@ locals {
     user        = "ec2-user",
     private_key = file(var.ssh_private_key_file),
   }
-  out_dir = "./etc"
 }
 
 resource "aws_instance" "pub" {
@@ -59,8 +58,9 @@ resource "aws_instance" "pub" {
 
   provisioner "local-exec" {
     command = <<-EOC
-      /usr/bin/mkdir -p ${local.out_dir}
-      /usr/bin/echo "${self.public_ip} ${self.tags["Name"]} ${self.public_dns" >> ${local.out_dir}/hosts
+      /usr/bin/mkdir -p ${var.out_dir}
+      [ -f ${var.out_dir}/hosts ] && /usr/bin/sed -i "/ ${self.tags["Name"]} /d" ${var.out_dir}/hosts
+      /usr/bin/echo "${self.public_ip} ${self.tags["Name"]} ${self.public_dns}" >> ${var.out_dir}/hosts
     EOC
   }
 }

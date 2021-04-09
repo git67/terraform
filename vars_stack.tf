@@ -1,4 +1,9 @@
 # globals
+variable "out_dir" {
+  description = "output directory" 
+  default = "./etc"
+}
+
 # naming
 variable "team" {
   description = "team name"

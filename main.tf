@@ -18,6 +18,7 @@ module "stack" {
   vpc_name = join("_",[var.team, "vpc"])
   vpc_cidr = var.vpc_cidr
   team = var.team
+  out_dir = var.out_dir
 
   ssh_key_file = var.ssh_key_file
   keypair_name = join("_",[var.team, "keypair"])
