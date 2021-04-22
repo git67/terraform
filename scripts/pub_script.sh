@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+set -euo pipefail
+
+export PATH="/usr/bin:/usr/sbin/:${PATH}"
 
 PRIV_KEY=${1:-"NONE"}
 TIME_OUT=60
@@ -6,6 +9,7 @@ FINAL_WAIT_DELAY=5
 
 _wait_for_finish()
 {
+COUNT=0
 until [ -f /var/lib/cloud/instance/boot-finished ]
 do
   COUNT=$(( ${COUNT} + 1 ))
@@ -26,11 +30,12 @@ fi
 
 _add_apache()
 {
+IP=$(ip r show|grep " src "|cut -d " " -f 3,9)
 sudo yum install httpd -y
 sudo sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf
 sudo touch /var/www/html/index.html
 sudo chmod 666 /var/www/html/index.html
-sudo echo "hi world" >> /var/www/html/index.html
+sudo echo "${IP}" >> /var/www/html/index.html
 sudo systemctl start httpd
 }
 
