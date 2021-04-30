@@ -6,3 +6,4 @@
 **/state/
 **/etc/
 **/log/
+**/.terraform.lock.*
