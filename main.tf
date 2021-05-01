@@ -1,7 +1,7 @@
 # aws
 provider "aws" {
-  profile = "<your_profile>"
-  region  = "eu-central-1"
+  profile = var.aws_cli_profile
+  region  = var.aws_region
 }
 
 # vpc

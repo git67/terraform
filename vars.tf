@@ -1,3 +1,13 @@
+variable "aws_cli_profile" {
+  description = "aws profile"
+  default = "<your aws cli profile>"
+}
+
+variable "aws_region" {
+  description = "aws region"
+  default = "eu-central-1"
+}
+
 variable "namespace" {
   description = "part of naming schema"
   default = "terraform_demo"
