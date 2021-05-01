@@ -19,12 +19,12 @@ ls ~/.aws
 aws configure list --profile <your-profile-name>
 ```
 
-#### - Probe connection to aws clous
+#### - Probe connection to aws api
 ```
 aws ec2 describe-regions --profile <your-profile-name>
 ```
 
-#### - you have to pull these repository
+#### - You have to pull these repository
 ```
 git clone --branch features/minimal https://github.com/git67/terraform.git ./miminal
 cd ./minimal
