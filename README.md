@@ -30,14 +30,11 @@ git clone --branch features/minimal https://github.com/git67/terraform.git ./mim
 cd ./minimal
 ```
 
-###### - Place your profile name into main.tf:
+###### - Place your profile name into vars.tf:
 ```
-//aws
-provider "aws" {
-  profile = "<your_profile>"     <- here
-  region  = "eu-central-1"
-}
-…
+...
+  default = "<your aws cli profile>"
+...
 ```
 #### - Initialisation of terraform environment
 ```
