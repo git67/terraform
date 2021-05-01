@@ -26,7 +26,7 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - You have to pull these repository
 ```
-git clone --branch features/minimal https://github.com/git67/terraform.git ./miminal
+git clone --branch features/minimal https://github.com/git67/terraform.git ./minimal
 cd ./minimal
 ```
 
