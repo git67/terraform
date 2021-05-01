@@ -26,15 +26,10 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - you have to pull these repository
 ```
-git clone https://github.com/git67/terraform.git ./terraform
-cd ./terraform
+git clone --branch features/minimal https://github.com/git67/terraform.git ./miminal
+cd ./minimal
 ```
 
-#### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
-###### - variable "instance_count"  -> count ec2 instances
-```
-vim vars.tf
-```
 ###### - Place your profile name into main.tf:
 ```
 //aws
@@ -60,20 +55,7 @@ terraform plan
 terraform apply -auto-approve
 ```
 
-#### - Have a look for public-ip's of ec2-instances
-```
-...
-public_ip = [
-...
-```
-
-#### - Probe ssh login into an instance
-```
-ssh -i ~/.ssh/id_rsa ec2-user@<public_ip>
-```
-
-
-#### - Undeployment
+#### - Remove your deployment
 ```
 terraform destroy -auto-approve
 ```
