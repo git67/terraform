@@ -26,11 +26,11 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - You have to pull these repository
 ```
-git clone --branch features/minimal https://github.com/git67/terraform.git ./minimal
-cd ./minimal
+git clone --branch features/singlefile https://github.com/git67/terraform.git ./singlefile
+cd ./singlefile
 ```
 
-###### - Place your profile name into vars.tf:
+###### - Place your profile name into main.tf:
 ```
 ...
   default = "<your aws cli profile>"
