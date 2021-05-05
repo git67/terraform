@@ -51,7 +51,7 @@ vim vars_stack.tf
 terraform init
 ```
 
-#### - Probe your terraform code
+#### - Probe your terraform code now
 ```
 terraform validate
 terraform plan
