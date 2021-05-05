@@ -62,6 +62,11 @@ terraform plan
 terraform apply -auto-approve
 ```
 
+#### - Or run terraform without any interaction and some customization, build your environment@aws
+```
+terraform apply -auto-approve -var 'pub_instance_count=3' -var 'priv_instance_count=1'
+```
+
 #### - Have a look for public-ip's of ec2-instances
 ```
 ...
