@@ -41,7 +41,7 @@ sudo systemctl start httpd
 
 
 # main
-_wait_for_finish ${TIME_OUT} ${FINAL_WAIT_DELAY}
-_add_ssh_agent ${PRIV_KEY}
+#_wait_for_finish ${TIME_OUT} ${FINAL_WAIT_DELAY}
+#_add_ssh_agent ${PRIV_KEY}
 _add_apache
 

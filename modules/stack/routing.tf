@@ -1,20 +1,20 @@
 # create routing table
-resource "aws_route_table" "global" {
-  vpc_id = aws_vpc.global.id
+resource "aws_route_table" "dev" {
+  vpc_id = aws_vpc.dev.id
   route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.global.id
+        gateway_id = aws_internet_gateway.dev.id
     }
   tags = {
-    team = var.team
-    Name = join("_",[var.team, "global_rtb"])
+    namespace = var.namespace
+    Name = join("_",[var.namespace, "dev_rtb"])
     }
 }
 
 # associate table to subnet(s)
-resource "aws_route_table_association" "global" {
+resource "aws_route_table_association" "dev" {
   count = length(var.subnet_cidrs)
-  subnet_id      = element(aws_subnet.global.*.id, count.index)
-  route_table_id = aws_route_table.global.id
+  subnet_id      = element(aws_subnet.dev.*.id, count.index)
+  route_table_id = aws_route_table.dev.id
 }
 

@@ -17,21 +17,21 @@ variable "out_dir" {
 }
 
 # naming
-variable "team" {
+variable "namespace" {
   type = string
-  description = "team name"
-  default = "ec3"
+  description = "namespace for building unique name tags"
+  default = "demo"
 }
 
-variable "ssh_key_file" {
-  description = "ssh pub-key file"
-  default = "~/.ssh/id_rsa.pub"
+# ssh stuff
+variable "ssh_credentials" {
+  description = "ssh key files"
+  type = map
+  default = {
+    "pub_key"  = "~/.ssh/id_rsa.pub"
+    "priv_key"  = "~/.ssh/id_rsa"
+  }
 }
-variable "ssh_private_key_file" {
-  description = "ssh private key file"
-  default = "~/.ssh/id_rsa"
-}
-
 
 # vpc
 variable "vpc_cidr" {
@@ -53,76 +53,26 @@ variable "av_zones" {
 	default = ["eu-central-1a", "eu-central-1b"]
 }
 
+# ec2
+variable "instance_ami" {
+  type = string
+  description = "aws ami - image id"
+  default = "ami-0a02ee601d742e89f"
+}
 
+variable "instance_type" {
+  type = string
+  description = "aws ec2 type"
+  default = "t2.nano"
+}
 
+variable "add_instance_count" {
+  type = number
+  description = "count of addional build instances"
+  default = 0
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# public
-variable "pub_script" {
+variable "cloud_init_script" {
   description = "first boot script"
   default = "scripts/pub_script.sh"
-}
-variable "pub_instance_ami" {
-  description = "pub_aws ami - image id"
-  default = "ami-0a02ee601d742e89f"
-}
-variable "pub_instance_type" {
-  description = "pub_aws ec2 type"
-  default = "t2.nano"
-}
-variable "pub_instance_count" {
-  description = "pub_instance count"
-  default = "1"
-}
-variable "pub_subnet_cidr" {
-  description = "pub_subnet_cidr"
-  default = "128.0.0.0/19"
-}
-variable "pub_subnet_availability_zone" {
-  description = "pub_subnet_availability_zone"
-  default = "eu-central-1a"
-}
-
-
-# private
-variable "priv_instance_ami" {
-  description = "priv_aws ami - image id"
-  default = "ami-0a02ee601d742e89f"
-}
-variable "priv_instance_type" {
-  description = "priv_aws ec2 type"
-  default = "t2.nano"
-}
-
-variable "priv_instance_count" {
-  description = "priv_instance count"
-  default = "1"
-}
-
-variable "priv_subnet_cidr" {
-  description = "priv_subnet_cidr"
-  default = "128.0.32.0/19"
-}
-
-variable "priv_subnet_availability_zone" {
-  description = "priv_subnet_availability_zone"
-  default = "eu-central-1a"
 }

@@ -1,6 +1,6 @@
 #public subnet(s)
-resource "aws_subnet" "global" {
-  vpc_id = aws_vpc.global.id
+resource "aws_subnet" "dev" {
+  vpc_id = aws_vpc.dev.id
   count = length(var.subnet_cidrs) 
 
   availability_zone = element(var.av_zones,count.index)
@@ -9,7 +9,7 @@ resource "aws_subnet" "global" {
 
   map_public_ip_on_launch = "true"
   tags = {
-    Name = join("_",[var.team, "subnet", count.index])
-    team = var.team
+    Name = join("_",[var.namespace, "subnet", count.index])
+    namespace = var.namespace
   }
 }

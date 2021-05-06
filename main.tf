@@ -21,10 +21,13 @@ module "stack" {
   subnet_cidrs = var.subnet_cidrs
   av_zones = var.av_zones
 
-  team = var.team
+  namespace = var.namespace
   out_dir = var.out_dir
 
-  ssh_key_file = var.ssh_key_file
-  ssh_private_key_file = var.ssh_private_key_file
+  ssh_credentials = var.ssh_credentials
 
+  instance_ami = var.instance_ami
+  instance_type = var.instance_type
+  add_instance_count = var.add_instance_count
+  cloud_init_script = var.cloud_init_script
 }
