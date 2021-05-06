@@ -1,9 +1,9 @@
 ## Scope (default)
-#### - VPC with 2 or more public  subnet(s)
+#### - VPC with 3 subnet(s) in separate av zones
 #### - 1 or more ec2 instance in every subnet
 #### - Allow public access through tcp/22, tcp/8080
-#### - Configure ELB
-#### - Add simple shell hook, simple !
+#### - Configure ELB over all instances (http:8080)
+#### - Add simple shell script via cloud-init
 
 
 ## The following steps are necessary:
@@ -37,14 +37,12 @@ cd ./ha_web_elb
 . .env
 ```
 
-#### - Set aws profile data in vars_aws.tf, if it is not the default profile
-```
-vim vars_aws.tf
-```
+#### - Set aws profile data in variables.tf, if it is not the default profile
 #### - Customize your stack environment (count of ec2 instanzes, cidr's, ...) or leave the default's
 ```
-vim vars_stack.tf
+vim variables.tf
 ```
+
 #### -Run the initialisation of terraform environment
 ```
 terraform init
@@ -62,23 +60,24 @@ terraform apply -auto-approve
 ```
 
 #### - or run terraform without any interaction and some customization to build your environment@aws
+#### - for example add 5 additional instances to the stack
 ```
-terraform apply -auto-approve -var 'pub_instance_count=3' -var 'priv_instance_count=1'
+# terraform apply -var "add_instance_count=5" -auto-approve
 ```
 
-#### - Have a look for public-ip's of ec2-instances
+#### - Have a look for public-ip's of ec2-instances and the fqdn of the elb
 ```
 ...
-public_ip = [
+Outputs:
+
+elb_fqdn = "..."
+pub_ec2_public_ip = [
+...
+]
 ...
 ```
 
-#### - For further processing a host file with the created instances is stored in ./etc
-```
-less ./etc/hosts
-```
-
-#### - Probe ssh login into an instance (or use the public key given in vars_stack.tf)
+#### - Probe ssh login into an instance (or use the public key given in variables.tf)
 ```
 ssh ec2-user@<public_ip>
 ```

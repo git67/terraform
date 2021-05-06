@@ -39,18 +39,18 @@ variable "vpc_cidr" {
   default = "128.0.0.0/16"
 }
 
-# subnets
+# subnets (keep in mind the aws elb can't deal with multiple subnets in a av-zone)
 variable "subnet_cidrs" {
   description = "pub_subnet_cidrs"
   type = list
-  default = ["128.0.1.0/24", "128.0.2.0/24"] 
+  default = ["128.0.1.0/24", "128.0.2.0/24", "128.0.3.0/24"] 
 }
 
 # avz
 variable "av_zones" {
   description = "used av zones"
 	type = list
-	default = ["eu-central-1a", "eu-central-1b"]
+	default = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
 }
 
 # ec2
