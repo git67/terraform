@@ -27,3 +27,7 @@ output "ec2_public_ip" {
   value       = aws_instance.dev.*.public_ip
 }
 
+output "elb_fqdn" {
+  description = "elp endpoint fqdn"
+  value = aws_elb.dev.dns_name
+}
