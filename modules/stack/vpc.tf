@@ -4,7 +4,7 @@ resource "aws_vpc" "global" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = var.vpc_name
+    Name = join("_",[var.team, "vpc"])
     team = var.team
   }
 }

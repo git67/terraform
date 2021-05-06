@@ -1,9 +1,8 @@
 ## Scope (default)
-#### - VPC with 2 subnet (pub/priv)
-#### - 1 ec2 instance in every subnet
-#### - Network parts 
+#### - VPC with 2 or more public  subnet(s)
+#### - 1 or more ec2 instance in every subnet
 #### - Allow public access through tcp/22, tcp/8080
-#### - Allow private access through tcp/22, icmp 
+#### - Configure ELB
 #### - Add simple shell hook, simple !
 
 
@@ -33,8 +32,8 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - You have to pull the repository from github
 ```
-git clone --branch features/ec2_pub_priv https://github.com/git67/terraform.git ./ec2_pub_priv
-cd ./ec2_pub_priv
+git clone --branch features/ha_web_elb https://github.com/git67/terraform.git ./ha_web_elb
+cd ./ha_web_elb
 . .env
 ```
 
