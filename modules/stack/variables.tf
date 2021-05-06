@@ -2,25 +2,25 @@
 variable "profile" {
   type = string
   description = "profile aws-cli"
-  default = "devops"
+  default = "NONE"
 }
 variable "region" {
   type = string
   description = "region aws-cli"
-  default = "eu-central-1"
+  default = "NONE"
 }
 # globals
 variable "out_dir" {
   type = string
   description = "output directory" 
-  default = "./etc"
+  default = "NONE"
 }
 
 # naming
 variable "namespace" {
   type = string
   description = "namespace for building unique name tags"
-  default = "demo"
+  default = "NONE"
 }
 
 # ssh stuff
@@ -36,34 +36,34 @@ variable "ssh_credentials" {
 # vpc
 variable "vpc_cidr" {
   description = "vpc_cidr"
-  default = "128.0.0.0/16"
+  default = "NONE"
 }
 
-# subnets
+# subnets (keep in mind the aws elb can't deal with multiple subnets in a av-zone)
 variable "subnet_cidrs" {
   description = "pub_subnet_cidrs"
   type = list
-  default = ["128.0.1.0/24", "128.0.2.0/24"] 
+  default = ["NONE"] 
 }
 
 # avz
 variable "av_zones" {
   description = "used av zones"
 	type = list
-	default = ["eu-central-1a", "eu-central-1b"]
+	default = ["NONE"]
 }
 
 # ec2
 variable "instance_ami" {
   type = string
   description = "aws ami - image id"
-  default = "ami-0a02ee601d742e89f"
+  default = "NONE"
 }
 
 variable "instance_type" {
   type = string
   description = "aws ec2 type"
-  default = "t2.nano"
+  default = "NONE"
 }
 
 variable "add_instance_count" {
@@ -74,5 +74,5 @@ variable "add_instance_count" {
 
 variable "cloud_init_script" {
   description = "first boot script"
-  default = "scripts/pub_script.sh"
+  default = "NONE"
 }
