@@ -66,10 +66,10 @@ variable "instance_type" {
   default = "t2.nano"
 }
 
-variable "add_instance_count" {
+variable "instance_count" {
   type = number
-  description = "count of addional build instances"
-  default = 0
+  description = "count of instances to build per subnet"
+  default = 3
 }
 
 variable "cloud_init_script" {

@@ -28,6 +28,6 @@ module "stack" {
 
   instance_ami = var.instance_ami
   instance_type = var.instance_type
-  add_instance_count = var.add_instance_count
+  instance_count = var.instance_count
   cloud_init_script = var.cloud_init_script
 }

@@ -10,6 +10,6 @@ resource "aws_subnet" "dev" {
   map_public_ip_on_launch = "true"
   tags = {
     Name = join("_",[var.namespace, "subnet", count.index])
-    namespace = var.namespace
+    av_zone = element(var.av_zones,count.index)
   }
 }

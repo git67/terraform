@@ -1,9 +1,10 @@
 ## Scope (default)
 #### - VPC with 3 subnet(s) in separate av zones
 #### - 1 or more ec2 instance in every subnet
+#### - Add one ebs-device to every ec2 instance
 #### - Allow public access through tcp/22, tcp/8080
 #### - Configure ELB over all instances (http:8080)
-#### - Add simple shell script via cloud-init
+#### - Add simple first-boot-script called by cloud-init
 
 
 ## The following steps are necessary:
@@ -60,9 +61,9 @@ terraform apply -auto-approve
 ```
 
 #### - or run terraform without any interaction and some customization to build your environment@aws
-#### - for example add 5 additional instances to the stack
+#### - for example create 5 instances per subnet into the stack
 ```
-# terraform apply -var "add_instance_count=5" -auto-approve
+# terraform apply -var "instance_count=5" -auto-approve
 ```
 
 #### - Have a look for public-ip's of ec2-instances and the fqdn of the elb
