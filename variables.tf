@@ -69,7 +69,7 @@ variable "instance_type" {
 variable "instance_count" {
   type = number
   description = "count of instances to build per subnet"
-  default = 3
+  default = 1
 }
 
 variable "cloud_init_script" {
