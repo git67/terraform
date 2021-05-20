@@ -1,7 +1,8 @@
-## Scope (default)
-#### - VPC with 3 subnet(s) in separate av zones
-#### - 1 or more ec2 instance in every subnet
+## AWS Scope (default)
+#### - Create one vpc over 3 availability zones with one within subnet
+#### - Create 1 or more ec2 instance in every subnet
 #### - Add one ebs-device to every ec2 instance
+#### - Add cloud watch alarms to every ec2 instance
 #### - Allow public access through tcp/22, tcp/8080
 #### - Configure ELB over all instances (http:8080)
 #### - Add simple first-boot-script called by cloud-init
@@ -33,8 +34,8 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - You have to pull the repository from github
 ```
-git clone --branch features/ha_web_elb https://github.com/git67/terraform.git ./ha_web_elb
-cd ./ha_web_elb
+git clone --branch features/ha_web_elb https://github.com/git67/terraform.git ./ha_web_elb_ebs
+cd ./ha_web_elb_ebs
 . .env
 ```
 
