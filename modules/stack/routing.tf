@@ -6,7 +6,6 @@ resource "aws_route_table" "dev" {
         gateway_id = aws_internet_gateway.dev.id
     }
   tags = {
-    namespace = var.namespace
     Name = join("_",[var.namespace, "dev_rtb"])
     }
 }

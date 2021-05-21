@@ -7,7 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "cpuutilization" {
   namespace           = "AWS/EC2"
   period              = "120"
   statistic           = "Average"
-  threshold           = "60"
+  threshold           = "20"
   alarm_description   = "This metric monitors ec2 cpu utilization"
 
   dimensions = {

@@ -5,6 +5,5 @@ resource "aws_vpc" "dev" {
   enable_dns_hostnames = true
   tags = {
     Name = join("_",[var.namespace, "vpc"])
-    namespace = var.namespace
   }
 }

@@ -21,7 +21,6 @@ resource "aws_security_group" "dev" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    namespace = var.namespace
     Name = join("_",[var.namespace, "sg_ec2"])
   }
 }
