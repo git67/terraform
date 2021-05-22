@@ -1,7 +1,7 @@
 ## AWS Scope (default)
 #### - Create one vpc over 3 availability zones with one within subnet
 #### - Create 1 or more ec2 instance in every subnet
-#### - Add one ebs-device to every ec2 instance
+#### - Add one ebs-device to every ec2 instance after creation of these
 #### - Add cloud watch alarms to every ec2 instance
 #### - Allow public access through tcp/22, tcp/8080
 #### - Configure ELB over all instances (http:8080)
