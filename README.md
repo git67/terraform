@@ -34,7 +34,7 @@ aws ec2 describe-regions --profile <your-profile-name>
 
 #### - You have to pull the repository from github
 ```
-git clone --branch features/ha_web_elb https://github.com/git67/terraform.git ./ha_web_elb_ebs
+git clone --branch features/ha_web_elb_ebs https://github.com/git67/terraform.git ./ha_web_elb_ebs
 cd ./ha_web_elb_ebs
 . .env
 ```
