@@ -14,7 +14,7 @@ variable "region" {
 variable "namespace" {
   type = string
   description = "namespace for building unique name tags"
-  default = "demo"
+  default = "hsdev"
 }
 
 # ssh stuff
