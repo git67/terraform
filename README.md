@@ -35,7 +35,7 @@ aws ec2 describe-regions --profile <your-profile-name>
 #### - You have to pull the repository from github
 ```
 git clone --branch features/us7 https://github.com/git67/terraform.git ./us7
-cd ./us7
+cd ./us7/tf
 . .env
 ```
 

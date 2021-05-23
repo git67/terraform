@@ -1,5 +1,0 @@
-[demo]
-ec2-3-67-6-79.eu-central-1.compute.amazonaws.com ansible_host=3.67.6.79 
-
-[all:vars]
-ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o GSSAPIAuthentication=no -o StrictHostKeyChecking=no'

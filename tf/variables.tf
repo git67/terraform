@@ -22,8 +22,8 @@ variable "ssh_credentials" {
   description = "ssh key files"
   type = map
   default = {
-    "pub_key"  = "~/.ssh/id_rsa.pub"
-    "priv_key"  = "~/.ssh/id_rsa"
+    "pub_key"  = "../common/keys/ec2-user.pub"
+    "priv_key"  = "../common/keys/ec2-user"
   }
 }
 
@@ -58,6 +58,17 @@ variable "ec2" {
     "ebs_device" = "/dev/sdb"
     "ebs_vol_size" = 1
     "ebs_vol_type" = "gp2"
-    "cloud_init_file" = "cloud_init/cloud_init_ansible_user.yml"
+    "cloud_init_file" = "./files/cloud_init/cloud_init_ansible_user.yml"
   }
 }
+
+# ansible
+variable "ansible" {
+  description = "ansible attributes"
+  type = map
+  default = {
+    "ansible_inv_template"  = "./files/templates/ansible_inventory.template"
+    "ansible_inv"  = "../ansible/inventories/inventory"
+  }
+}
+

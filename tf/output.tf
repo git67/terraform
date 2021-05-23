@@ -19,12 +19,12 @@ output "ec2_public_fqdns" {
 }
 
 resource "local_file" "inventory" {
-  content = templatefile("./templates/ansible_inventory.template",
+  content = templatefile(var.ansible["ansible_inv_template"],
     {
       group_name = var.namespace
       public_ips = module.stack.ec2_public_ips
       public_fqdns = module.stack.ec2_public_fqdns
     } 
   )
-  filename = "../ansible/inventories/inventory"
+  filename = var.ansible["ansible_inv"]
 }
