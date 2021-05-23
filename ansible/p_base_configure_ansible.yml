@@ -15,10 +15,6 @@
       include_role:
         name: r_check_availability
 
-    - name: "role check node os 4 rhel"
-      include_role:
-        name: r_check_4_rhel
-
     - name: "role create local facts"
       include_role:
         name: r_create_local_facts

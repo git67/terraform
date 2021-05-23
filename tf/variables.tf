@@ -22,8 +22,8 @@ variable "ssh_credentials" {
   description = "ssh key files"
   type = map
   default = {
-    "pub_key"  = "../common/keys/ec2-user.pub"
-    "priv_key"  = "../common/keys/ec2-user"
+    "pub_key"  = "./files/keys/ec2-user.pub"
+    "priv_key"  = "./files/keys/ec2-user"
   }
 }
 
