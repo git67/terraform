@@ -9,7 +9,7 @@
 
 
 ## The following steps are necessary:
-#### - Install terrafom && aws-cli && ssh-keygen (if needed)
+#### - Install terrafom && aws-cli 
 #### - Check terraform && aws-cli
 
 ```
@@ -35,8 +35,12 @@ aws ec2 describe-regions --profile <your-profile-name>
 #### - You have to pull the repository from github
 ```
 git clone --branch features/us7 https://github.com/git67/terraform.git ./us7
-cd ./us7/tf
-. .env
+```
+
+#### - Create or copy the needed ssh-keys, follow the instructions
+```
+cd ./us7/common/keys
+cat .README
 ```
 
 #### - Set aws profile data in variables.tf, if it is not the default profile
