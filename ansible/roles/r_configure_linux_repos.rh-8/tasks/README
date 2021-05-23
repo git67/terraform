@@ -1,0 +1,22 @@
+################################################
+# name: r_configure_linux_repos
+#
+# function:
+# - put gpg-key for rpm validation in place
+# - remove old yum repositories
+# - insert new yum repositories
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.2
+#
+# ref:
+# - files/gpg/*
+# - files/repos/*
+# - ../group_vars/all
+#
+# changelog:
+# - var 'repo_list' for selectiv install of rpm-repos
+# - simple case sensitive patternmatching
+#################################################

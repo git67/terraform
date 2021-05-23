@@ -1,0 +1,47 @@
+---
+# vars file for r_hardening_cron
+cron_files:
+  file1:
+    path: /etc/crontab
+    mode: og-rwx
+    owner: root
+    group: root
+  file2:
+    path: /etc/anacrontab
+    mode: og-rwx
+    owner: root
+    group: root
+  file3:
+    path: /etc/at.allow
+    mode: og-rwx
+    owner: root
+    group: root
+  file4:
+    path: /etc/cron.allow
+    mode: og-rwx
+    owner: root
+    group: root
+cron_dirs:
+  dir1:
+    path: /etc/cron.d
+    mode: og-rwx
+    owner: root
+    group: root
+  dir2:
+    path: /etc/cron.monthly
+    mode: og-rwx
+    owner: root
+    group: root
+  dir3:
+    path: /etc/cron.weekly
+    mode: og-rwx
+    owner: root
+    group: root
+  dir4:
+    path: /etc/cron.daily
+    mode: og-rwx
+    owner: root
+    group: root
+files_to_remove: 
+  - /etc/at.deny
+  - /etc/cron.deny

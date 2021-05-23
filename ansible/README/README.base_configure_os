@@ -1,0 +1,22 @@
+################################################
+# name: p_base_configure_os.yml
+#
+# function: 
+# - create admin user
+# - configure dns
+# - configure ntp
+# - deploy ca's
+# - configure rpm-repo's
+# - configure yum-cron
+# - update os
+# - probe systemd services 
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.2
+# changelog:
+# - run of os depend roles by name prefix 
+# - prefix for rhel derivats (centos/rhel) is build in r_check_4_rhel
+# - use prefix var 'runtime_dist_flag' at role call and rename of the role 
+################################################

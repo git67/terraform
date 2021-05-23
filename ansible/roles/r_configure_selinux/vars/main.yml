@@ -1,0 +1,6 @@
+---
+# vars file for r_configure_selinux
+
+selinux:
+  state: "enforcing"
+  policy: "targeted"

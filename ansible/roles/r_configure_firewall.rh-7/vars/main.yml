@@ -1,0 +1,42 @@
+---
+# vars file for r_configure_firewall
+
+firewall_port_based:
+  port1:
+    port: "179"
+    zone: public
+  port2:
+    port: "443"
+    zone: public
+  port3:
+    port: "2379-2380"
+    zone: public
+  port4:
+    port: "6443"
+    zone: public
+  port5:
+    port: "8285"
+    zone: public
+  port6:
+    port: "8472"
+    zone: public
+  port7:
+    port: "10010"
+    zone: public
+  port8:
+    port: "10250-10255"
+    zone: public
+  port9:
+    port: "30000-32767"
+    zone: public
+
+firewall_svc_based:
+  svc1:
+    service: ssh
+    zone: public
+  svc2:
+    service: http
+    zone: public
+  svc3:
+    service: https
+    zone: public

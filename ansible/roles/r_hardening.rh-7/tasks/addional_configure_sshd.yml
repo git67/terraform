@@ -1,0 +1,22 @@
+---
+# tasks file for r_addional_configure_sshd
+  - block:
+    - name: "include vars"
+      include_vars: addional_configure_sshd.yml
+
+    - name: "setting recommended permissions to several files"
+      file:
+        path: "{{ item.value['path'] }}"
+        state: touch
+        mode: "{{ item.value['mode'] }}"
+        owner: "{{ item.value['owner'] }}"
+        group: "{{ item.value['group'] }}"
+      loop: "{{ ssh_files| dict2items }}"
+
+
+    rescue:
+    - fail:
+        msg: "addional configure sshd failed"
+
+    tags:
+    - addional_configure_sshd

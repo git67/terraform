@@ -1,0 +1,18 @@
+##############################################
+## name: r_configure_dns
+##
+## function:
+## - configure dns client
+##
+## dev: heiko stein
+## mail: heiko.stein@etomer.com
+##
+## rel: 0.1
+##
+## ref:
+## - templates/t_resolv.conf.j2
+## - handlers/main.yml
+##
+## changelog:
+## -
+#################################################

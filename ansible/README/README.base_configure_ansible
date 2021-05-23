@@ -1,0 +1,16 @@
+################################################
+# name: p_base_configure_ansible.yml
+#
+# function: 
+# - create ansible user
+# - put ssh key in place
+# - create sudo role
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+# changelog:
+# -
+################################################
+

@@ -1,0 +1,19 @@
+---
+# tasks file for r_reboot_nodes
+  - block:
+    - name: "initiating reboot of managed nodes"
+      shell: /bin/sleep 5 &&  shutdown -r now "ansible reboot triggered"
+      async: 1
+      poll: 0
+      ignore_errors: true
+
+    - name: "wait for startup"
+      wait_for_connection:
+        delay: 30
+
+    rescue:
+    - fail:
+        msg: "error: reboot all given nodes"
+
+    tags:
+    - reboot_nodes

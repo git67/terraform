@@ -1,0 +1,11 @@
+#cloud-config
+groups:
+  - ansible
+users:
+  - name: ansible
+    home: /home/ansible
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: ansible
+    ssh_authorized_keys:
+      -  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCaXQRnpg10XyQHWrGY1twizHq8Mi0DSjRH79TfaXbVyTw51mfheXkhlFV7+xE3cWeWffWTpdhRPPMZvARZ88jgTVrilgN/aqJ5OQ414WiwDuOdx9ktpSnSvmJQHvoUvkXUC0T6YbQgn3ngP4PHRUKXwTIoXbQuEKbP86b11hqe2ZaLDdMp+w1F8mbwZ3M6eUDUXoAuB+S9xOMjddrMUTEuvLYYDvuMHX+AvIyj/Mg+H7rQUDmQk77H1xhkHwejA+D8fbzIghQn6H/G0P6M9ns1lsMiD9C5310kE6WC0TAVgI/EUTZqJQlZt+u/zu3HN1ujyVT5pbT5potxpzDQjd6D1n4MUW7AlwJK/YWIVRsRL6Yn1v+2mCi+peOiHPj6aDlOcCs+JkO5UPppghyu/SqKcVXR1RLFzRNU+/skGkCfbdMjcAj+yj7a7h+ameLMid51YtimvNJwOwvaRQi7lpDUc0Q+EzJZE1n7UoUFkpn8G+11Wn928w/iGVNhm9SU/dZBTEQz/vxGawhZqIhdbU2/C3oYC2WX5CkS0qfBby7zy4CxGv7qOl1H73amv7aBLwRg1gP59Fnl17Sn0oxfBaKiG+mNGe/vAQ8nQTfhViZrq6kJvWbxV9LK2cBeBrhhaQDy/ZuQxMErS4SEN+fQc2NwgUfI9OWnQN2wplM1eXe2mQ== ansible

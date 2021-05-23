@@ -1,0 +1,17 @@
+##############################################
+# name: r_hardening
+#
+# function:
+# - hardening according to the hardening specifications
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - vars/hardening_cron.yml
+#
+# changelog:
+# -
+#################################################

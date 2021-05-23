@@ -1,0 +1,18 @@
+---
+# tasks file for r_configure_sysctl
+  - block:
+    - name: "manage entries in /etc/sysctl.conf"
+      sysctl:
+        name: "{{ item.value['name'] }}"
+        value: "{{ item.value['value'] }}"
+        sysctl_set: yes
+        state: "{{ item.value['state'] }}"
+        reload: yes
+      loop: "{{ sysctl | dict2items }}"
+
+    rescue:
+    - fail:
+        msg: "configure sysctl failed"
+
+    tags:
+    - configure_sysctl

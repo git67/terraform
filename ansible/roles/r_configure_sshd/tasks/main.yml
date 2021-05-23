@@ -1,0 +1,97 @@
+---
+# tasks file for r_configure_sshd
+  - block:
+    - name: "disable root login on tty"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?PermitRootLogin"
+        line: "PermitRootLogin no"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "disable dns lookups"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?UseDNS"
+        line: "UseDNS no"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "disable sshd PermitEmptyPasswords"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?PermitEmptyPasswords"
+        line: "PermitEmptyPasswords no"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "disable sshd HostbasedAuthentication"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?HostbasedAuthentication"
+        line: "HostbasedAuthentication no"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "enable sshd IgnoreRhosts"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?IgnoreRhosts"
+        line: "IgnoreRhosts yes"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "set sshd LogLevel"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?LogLevel"
+        line: "LogLevel INFO"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "set sshd MaxAuthTries"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?MaxAuthTries"
+        line: "MaxAuthTries 4"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "set sshd Ciphers"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?Ciphers"
+        line: "Ciphers aes128-ctr,aes192-ctr,aes256-ctr"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "disable sshd PermitUserEnvironment"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?PermitUserEnvironment"
+        line: "PermitUserEnvironment no"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "enable sshd StrictModes"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?StrictModes"
+        line: "StrictModes yes"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    - name: "disable sshd X11Forwarding"
+      lineinfile:
+        dest: "{{ sshd_config_file }}"
+        regex: "^#?X11Forwarding"
+        line: "X11Forwarding no"
+        validate: "sshd -tf %s"
+      notify: restart_sshd
+
+    rescue:
+    - fail:
+        msg: "error: configure sshd service"
+
+    tags:
+    - configure_sshd

@@ -1,0 +1,54 @@
+################################################
+# name: r_configure_auto_update
+#
+# function:
+# - configure yum cron / security updates
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - templates/t_yum-cron.conf.j2
+# - vars/main.yml
+#
+# changelog:
+# -
+#################################################
+---
+# tasks file r_configure_auto_update
+  - block:
+    - name: "install needed packages"
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - cronie
+        - yum-cron
+
+    - name: "check needed service"
+      service: 
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - crond
+        - yum-cron
+
+    - name: "configure yum-cron"
+      template:
+        dest: "/etc/yum/yum-cron.conf"
+        src: "templates/t_yum-cron.conf.j2"
+        mode: 0644
+        backup: yes
+        force: yes
+      notify:
+        - reload_yum_cron
+
+    rescue:
+    - fail:
+        msg: "error: configure auto update / security updates"
+
+    tags:
+      - configure_auto_update

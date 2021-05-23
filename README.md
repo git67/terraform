@@ -1,6 +1,14 @@
-## terraform
+## AWS Scope (default)
+#### - Create one vpc over 3 availability zones with one within subnet
+#### - Create 1 or more ec2 instance in every subnet
+#### - Add one ebs-device to every ec2 instance
+#### - Add cloud watch alarms to every ec2 instance
+#### - Allow public access through tcp/22, tcp/8080
+#### - Configure ELB over all instances (http:8080)
+#### - Add simple first-boot-script called by cloud-init
 
-#### The following steps are necessary:
+
+## The following steps are necessary:
 #### - Install terrafom && aws-cli && ssh-keygen (if needed)
 #### - Check terraform && aws-cli
 
@@ -19,61 +27,65 @@ ls ~/.aws
 aws configure list --profile <your-profile-name>
 ```
 
-#### - Probe connection to aws clous
+#### - Probe connection to aws cloud
 ```
 aws ec2 describe-regions --profile <your-profile-name>
 ```
 
-#### - you have to pull these repository
+#### - You have to pull the repository from github
 ```
-git clone https://github.com/git67/terraform.git ./terraform
-cd ./terraform
+git clone --branch features/us7 https://github.com/git67/terraform.git ./us7
+cd ./us7
+. .env
 ```
 
-#### - In certain circumstances, set your needed data in variables.tf (profile/region/count)
-###### - variable "instance_count"  -> count ec2 instances
+#### - Set aws profile data in variables.tf, if it is not the default profile
+#### - Customize your stack environment (count of ec2 instanzes, cidr's, ...) or leave the default's
 ```
-vim vars.tf
+vim variables.tf
 ```
-###### - Place your profile name into main.tf:
-```
-//aws
-provider "aws" {
-  profile = "<your_profile>"     <- here
-  region  = "eu-central-1"
-}
-…
-```
-#### - Initialisation of terraform environment
+
+#### -Run the initialisation of terraform environment
 ```
 terraform init
 ```
 
-#### - Probe your terraform code
+#### - Probe your terraform code now
 ```
 terraform validate
 terraform plan
 ```
 
-#### - Run terraform without any interaction
+#### - Run terraform without any interaction, build your environment@aws
 ```
 terraform apply -auto-approve
 ```
 
-#### - Have a look for public-ip's of ec2-instances
+#### - or run terraform without any interaction and some customization to build your environment@aws
+#### - for example create 5 instances per subnet into the stack
+```
+# terraform apply -var "instance_count=5" -auto-approve
+```
+
+#### - Have a look for public-ip's of ec2-instances and the fqdn of the elb
 ```
 ...
-public_ip = [
+Outputs:
+
+elb_fqdn = "..."
+pub_ec2_public_ip = [
+...
+]
 ...
 ```
 
-#### - Probe ssh login into an instance
+#### - Probe ssh login into an instance (or use the public key given in variables.tf)
 ```
-ssh -i ~/.ssh/id_rsa ec2-user@<public_ip>
+ssh ec2-user@<public_ip>
 ```
 
 
-#### - Undeployment
+#### - Destroy your environment@aws
 ```
 terraform destroy -auto-approve
 ```

@@ -1,0 +1,31 @@
+---
+# tasks file for r_configure_dns---
+  - block:
+    - name: "fix networkmanager config file"
+      ini_file:
+        path: "/etc/NetworkManager/NetworkManager.conf"
+        section: main
+        option: dns
+        value: none
+        no_extra_spaces: yes  
+        state: present
+        backup: yes
+      notify:
+        - reload_nm 
+
+    - name: "template /etc/resolv.conf"
+      template:
+        dest: "/etc/resolv.conf"
+        src: "templates/t_resolv.conf.j2"
+        mode: 0644
+        backup: yes
+        force: yes
+      notify:
+        - reload_nm 
+
+    rescue:
+    - fail:
+        msg: "configure dns failed"
+
+    tags:
+    - configure_dns

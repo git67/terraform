@@ -1,0 +1,8 @@
+---
+# vars file for r_addional_configure_sshd
+ssh_files:
+  file1:
+    path: /etc/ssh/sshd_config
+    mode: '0600'
+    owner: root
+    group: root

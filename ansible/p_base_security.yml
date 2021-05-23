@@ -1,0 +1,78 @@
+################################################
+---
+- name: "configure security stuff at {{ ansible_play_hosts | to_yaml }}"
+  hosts: "{{ group_name | default('all') }}"
+  gather_facts: no
+  any_errors_fatal: true
+  become: yes
+  vars:
+    pl_name: "security"
+
+################################################
+  pre_tasks:
+  - block:
+    - name: "role check availibility"
+      include_role:
+        name: r_check_availability
+
+    - name: "role check node os 4 rhel"
+      include_role:
+        name: r_check_4_rhel
+
+    - name: "role create local facts"
+      include_role:
+        name: r_create_local_facts
+
+    rescue:
+    - fail:
+        msg: "pre tasks {{ pl_name }} failed"
+
+    tags:
+    - always
+
+
+################################################
+  tasks:
+  - block:
+    - name: "role configure firewall"
+      include_role:
+        name: r_configure_firewall.{{ runtime_dist_flag }}
+      tags: 
+      - configure_firewall
+
+    - name: "role configure selinux"
+      include_role:
+        name: r_configure_selinux
+      tags: 
+      - configure_selinux
+
+    - name: "role configure sysctl"
+      include_role:
+        name: r_configure_sysctl
+      tags: 
+      - configure_sysctl
+
+    - name: "role hardening"
+      include_role:
+        name: r_hardening.{{ runtime_dist_flag }}
+      tags:
+      - hardening_cron
+      - password_policies
+
+
+    rescue:
+    - fail:
+        msg: "tasks {{ pl_name }} failed"
+
+################################################
+  post_tasks:
+  - block:
+    - name: "role write local state facts"
+      include_role:
+        name: r_write_local_state_facts
+      tags:
+      - always
+
+    rescue:
+    - fail:
+        msg: "post tasks {{ pl_name }} failed"

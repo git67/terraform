@@ -1,0 +1,32 @@
+---
+# tasks file for r_deploy_ca
+  - block:
+    - name: "create /etc/pki/ca-trust/source/anchors"
+      file:
+        path: "/etc/pki/ca-trust/source/anchors"
+        state: directory
+        mode: 0755
+
+    - name: "copy ca to /etc/pki/ca-trust/source/anchors"
+      copy:
+        dest: "/etc/pki/ca-trust/source/anchors"
+        src: "{{ item }}"
+        group: "root"
+        owner: "root"
+        mode: 0644
+      with_fileglob:
+        - "files/*crt"
+
+    - name: "update trusted ca"
+      shell: |
+        update-ca-trust extract 
+        exit $?
+      args:
+        executable: /bin/bash
+
+    rescue:
+    - fail:
+        msg: "error: during deploy ca"
+
+    tags:
+    - deploy_ca

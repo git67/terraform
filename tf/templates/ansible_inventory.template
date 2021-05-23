@@ -1,0 +1,7 @@
+[${group_name}]
+%{ for i, fqdn in public_fqdns ~}
+${fqdn} ansible_host=${public_ips[i]} 
+%{ endfor ~}
+
+[all:vars]
+ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o GSSAPIAuthentication=no -o StrictHostKeyChecking=no'

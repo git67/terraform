@@ -1,0 +1,30 @@
+---
+# tasks file for r_check_4_rhel
+# get facts
+  - block:
+    - name: "reload facts"
+      setup:
+#        gather_subset:
+#          - '!all'
+#          - '!any'
+#          - facter
+
+    - name: "probe for rhel/centos"
+      fail:
+        msg: "{{ ansible_host }} doesn't run redhat/centos"
+      when: ('centos' not in ansible_distribution|lower and 'redhat' not in ansible_distribution|lower)
+
+    - name: "set runtime distribution flag" 
+      set_fact:
+        runtime_dist_flag: "rh-{{ ansible_distribution_major_version }}"
+
+    - name: "display runtime distribution flag"
+      debug:
+        msg: "{{ ansible_host }}:{{ runtime_dist_flag }}"
+      
+    rescue:
+    - fail:
+        msg: "error: during check 4 rhel"
+
+    tags:
+    - always

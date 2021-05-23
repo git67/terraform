@@ -1,0 +1,6 @@
+---
+# handlers file for r_configure_dns
+  - name: "reload_nm"
+    service:
+      name: NetworkManager
+      state: reloaded

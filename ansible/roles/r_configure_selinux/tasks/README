@@ -1,0 +1,17 @@
+#################################################
+# name: r_configure_selinux
+#
+# function:
+# - configure selinux -> enforced
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - vars/main.yml
+#
+# changelog:
+# -
+#################################################

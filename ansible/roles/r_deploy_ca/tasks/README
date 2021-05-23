@@ -1,0 +1,17 @@
+################################################
+## name: r_deploy_ca
+##
+## function:
+## - put ca's in place
+##
+## dev: heiko stein
+## mail: heiko.stein@etomer.com
+##
+## rel: 0.1
+##
+## ref:
+## - %
+##
+## changelog:
+## -
+#################################################

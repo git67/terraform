@@ -1,0 +1,17 @@
+---
+# tasks file for r_configure_hosts_file
+  - block:
+    - name: "build /etc/hosts entries"
+      lineinfile:
+        dest: "/etc/hosts"
+        regex: ".*{{ item }}$"
+        line: "{{ hostvars[item]['ansible_' + interface_for_hosts_file]['ipv4']['address'] }} {{item}}"
+      when: hostvars[item].ansible_default_ipv4.address is defined
+      loop: "{{ groups['all'] | flatten(levels=1) }}"
+
+    rescue:
+    - fail:
+        msg: "configure /etc/hosts failed"
+
+    tags:
+    - configure_hosts_file

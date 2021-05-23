@@ -1,0 +1,16 @@
+################################################
+# name: p_base_security.yml
+#
+# function: 
+# - configure firewall
+# - configure selinux
+# - configure oscap
+# - configure aide
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+# changelog:
+# -
+################################################

@@ -1,0 +1,15 @@
+# vars file for r_create_admin_user
+---
+admin_user:
+  admin:
+    name: admin
+    home_dir: /home/admin
+    group: users
+    comment: "administrativer user"
+    uid: 61003
+    gid: 100
+    sudo_file: admin
+    sudo_entry: "admin ALL=(ALL) NOPASSWD: ALL"
+    pub_key_file: "admin.pub.vault"
+    password_file: "admin.pw.vault"
+noop:

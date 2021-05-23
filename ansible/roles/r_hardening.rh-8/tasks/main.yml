@@ -1,0 +1,16 @@
+---
+# tasks file for r_hardening_policy
+- name: "include task hardening cron"
+  include_tasks: hardening_cron.yml
+  tags:
+    - hardening_cron
+
+#- name: "include task password policies"
+#  include_tasks: password_policies.yml
+#  tags:
+#    - password_policies
+
+- name: "include addional configure sshd"
+  include_tasks: addional_configure_sshd.yml
+  tags:
+    - addional_configure_sshd

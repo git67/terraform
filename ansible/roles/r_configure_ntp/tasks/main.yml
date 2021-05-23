@@ -1,0 +1,30 @@
+---
+# tasks file for r_configure_ntp
+  - block:
+    - name: "install chrony"
+      package:
+        name: chrony
+        state: present
+
+    - name: "check chrony service"
+      service: 
+        name: chronyd 
+        state: started
+        enabled: yes
+
+    - name: "configure chronyd"
+      template:
+        dest: "/etc/chrony.conf"
+        src: "templates/t_chrony.conf.j2"
+        mode: 0644
+        backup: yes
+        force: yes
+      notify:
+        - reload_chrony 
+
+    rescue:
+    - fail:
+        msg: "error: configure ntp service chrony"
+
+    tags:
+    - configure_ntp

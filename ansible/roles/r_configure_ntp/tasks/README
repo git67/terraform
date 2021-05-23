@@ -1,0 +1,19 @@
+################################################
+# name: r_configure_ntp 
+#
+# function:
+# - configure ntp/chrony
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - vars/main.yml
+# - templates/t_chrony.conf.j2
+# - handlers/main.yml
+#
+# changelog:
+# -
+#################################################

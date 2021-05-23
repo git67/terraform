@@ -1,0 +1,17 @@
+################################################
+# name: r_configure_sshd
+#
+# function:
+# - configure sshd
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - handlers/main.yml
+# - vars/main.yml
+# changelog:
+# -
+#################################################

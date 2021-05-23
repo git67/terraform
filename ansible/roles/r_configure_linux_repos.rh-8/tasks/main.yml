@@ -1,0 +1,86 @@
+---
+# tasks file for r_configure_linux_repos
+  - block:
+    - name: "create /etc/pki/rpm-gpg"
+      file:
+        path: "/etc/pki/rpm-gpg"
+        state: directory
+        mode: 0755
+
+    - name: "copy gpg-keys to /etc/pki/rpm-gpg"
+      copy:
+        dest: "/etc/pki/rpm-gpg"
+        src: "{{ item }}"
+        group: "root"
+        owner: "root"
+        mode: 0644
+        backup: yes
+      with_fileglob:
+        - "files/gpg/*"
+      no_log: yes
+
+    - name: "list available yum repositories"
+      find:
+        paths: "/etc/yum.repos.d/"
+        patterns: "*repo"
+      register: repos
+
+    - name: "remove inital installed yum repositories"
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ repos['files'] | flatten(levels=1) }}"
+
+    - name: "build list of repo-files by pattern: {{ repo_pattern }}"
+      local_action:
+        module: find
+        paths: "./roles/{{ role_name }}/files/repos"
+        patterns: "{{ repo_pattern }}"
+      register: repos_by_pattern
+
+    #- debug:
+    #    msg: "{{ item.path }}"
+    #  loop: "{{ repos_by_pattern['files'] | flatten(levels=1) }}"
+
+    #- debug:
+    #    msg: "{{ role_name }}"
+
+    - name: "copy repos to /etc/yum.repos.d/"
+      copy:
+        dest: "/etc/yum.repos.d/"
+        #src: "{{ item }}"
+        src: "{{ item.path }}"
+        group: "root"
+        owner: "root"
+        mode: 0644
+        backup: yes
+        force: yes
+      loop: "{{ repos_by_pattern['files'] | flatten(levels=1) }}"
+    #with_fileglob:
+    #    - "files/repos/*repo"
+
+    - name: "cleanup yum environment"
+      command: yum clean all
+      args:
+        warn: no
+
+    - name: "list copied gpg keys"
+      find:
+        paths: "/etc/pki/rpm-gpg/"
+        patterns: "*"
+      register: gpg_keys
+
+    - name: "import gpg-key for rpm package validation"
+      command: rpm --import {{ item.path }}
+      args:
+        warn: no
+      loop: "{{ gpg_keys['files'] | flatten(levels=1) }}"
+      no_log: yes
+      ignore_errors: yes
+
+    rescue:
+    - fail:
+        msg: "error: configure linux repositories"
+
+    tags:
+    - configure_linux_repos

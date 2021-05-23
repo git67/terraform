@@ -1,0 +1,6 @@
+---
+# handlers file for r_configure_ntp
+  - name: "reload_chrony"
+    service:
+      name: chronyd
+      state: restarted

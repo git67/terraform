@@ -1,0 +1,21 @@
+---
+# tasks file for r_probe_services
+  - block:
+    - name: "gather facts about service states"
+      service_facts:
+
+    - name: "check for failed systemd services"
+      shell: |
+        SVC={{ hostvars[inventory_hostname]['services'][item]['name'] }}
+        systemctl is-failed ${SVC}
+      loop: "{{ hostvars[inventory_hostname]['services'] | flatten(levels=1) }}"
+      failed_when: is_failed.stdout == "failed" and bybass_failed_service == "no"
+      changed_when: false
+      register: is_failed
+
+    rescue:
+    - fail:
+        msg: "error: failed services found"
+
+    tags:
+    - probe_services

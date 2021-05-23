@@ -1,0 +1,14 @@
+---
+# tasks file for r_update_all
+  - block:
+    - name: "update all packages"
+      dnf:
+        name: "*"
+        state: latest
+
+    rescue:
+    - fail:
+        msg: "error: update all rpm's from configured repos"
+
+    tags:
+    - update_all

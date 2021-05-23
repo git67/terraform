@@ -1,0 +1,44 @@
+---
+# tasks file for r_hardening_cron
+  - block:
+    - name: "include vars"
+      include_vars: hardening_cron.yml
+
+    - name: "setting recommended permissions to several files"
+      file:
+        path: "{{ item.value['path'] }}"
+        state: touch
+        mode: "{{ item.value['mode'] }}"
+        owner: "{{ item.value['owner'] }}"
+        group: "{{ item.value['group'] }}"
+      loop: "{{ cron_files| dict2items }}"
+
+    - name: "setting recommended permissions to several directories"
+      file:
+        path: "{{ item.value['path'] }}"
+        state: directory
+        mode: "{{ item.value['mode'] }}"
+        owner: "{{ item.value['owner'] }}"
+        group: "{{ item.value['group'] }}"
+      loop: "{{ cron_dirs| dict2items }}"
+
+    - name: "remove several files"
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop: "{{ files_to_remove }}"
+
+    - name: "setting recommended permissions to /var/log/cron"
+      file:
+        path: /var/log/cron
+        state: file
+        mode: 0770
+        owner: root
+        group: root
+
+    rescue:
+    - fail:
+        msg: "hardening cron failed"
+
+    tags:
+    - hardening_cron

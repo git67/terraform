@@ -1,0 +1,9 @@
+**/script/  
+**/stuff/  
+**/.terraform
+**/*tfstate
+**/*tfstate*
+**/state/
+**/etc/
+**/log/
+**/.terraform.lock.*

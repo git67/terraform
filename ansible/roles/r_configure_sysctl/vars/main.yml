@@ -1,0 +1,56 @@
+---
+# vars file for r_configure_sysctl
+
+sysctl:
+  entry1:
+    name: "net.ipv4.tcp_challenge_ack_limit"
+    value: "999999999"
+    state: "present"
+  entry2:
+    name: "kernel.randomize_va_space"
+    value: "2"
+    state: "present"
+  entry3:
+    name: "net.ipv4.conf.all.accept_redirects"
+    value: "0"
+    state: "present"
+  entry4:
+    name: "net.ipv4.conf.all.accept_source_route"
+    value: "0"
+    state: "present"
+  entry5:
+    name: "net.ipv4.conf.all.secure_redirects"
+    value: "0"
+    state: "present"
+  entry6:
+    name: "net.ipv4.conf.all.send_redirects"
+    value: "0"
+    state: "present"
+  entry7:
+    name: "net.ipv4.conf.default.accept_redirects"
+    value: "0"
+    state: "present"
+  entry8:
+    name: "net.ipv4.icmp_echo_ignore_broadcasts"
+    value: "1"
+    state: "present"
+  entry9:
+    name: "net.ipv4.icmp_ignore_bogus_error_responses"
+    value: "1"
+    state: "present"
+  entry10:
+    name: "net.ipv4.ip_forward"
+    value: "0"
+    state: "present"
+  entry11:
+    name: "net.ipv4.route.flush"
+    value: "1"
+    state: "present"
+  entry12:
+    name: "net.ipv4.tcp_syncookies"
+    value: "1"
+    state: "present"
+  entry13:
+    name: "net.ipv6.conf.all.disable_ipv6"
+    value: "1"
+    state: "present"

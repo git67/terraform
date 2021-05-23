@@ -1,0 +1,7 @@
+---
+# handlers file for r_configure_yum_cron
+  - name: "reload_yum_cron"
+    service:
+      name: yum-cron
+      state: restarted
+

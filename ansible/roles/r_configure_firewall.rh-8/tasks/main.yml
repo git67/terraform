@@ -1,0 +1,51 @@
+---
+# tasks file for r_configure_firewall
+  - block:
+    - name: "install needed packages"
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - firewalld
+
+    - name: "check needed service"
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - firewalld
+
+    - name: "configure firewalld - ports"
+      firewalld:
+        zone: "{{ item.value.zone }}"
+        port: "{{ item.value.port }}/tcp"
+        permanent: true
+        state: enabled
+        immediate: yes
+      loop: "{{ firewall_port_based | dict2items}}"
+
+    - name: "configure firewalld - services"
+      firewalld:
+        zone: "{{ item.value.zone }}"
+        service: "{{ item.value.service }}"
+        permanent: true
+        state: enabled
+        immediate: yes
+      loop: "{{ firewall_svc_based | dict2items}}"
+
+    - name: "configure firewalld masqerade"
+      firewalld:
+        masquerade: "yes"
+        permanent: true
+        state: enabled
+        zone: public
+        immediate: yes
+
+    rescue:
+    - fail:
+        msg: "configure firewall failed"
+
+    tags:
+    - configure_firewall
+

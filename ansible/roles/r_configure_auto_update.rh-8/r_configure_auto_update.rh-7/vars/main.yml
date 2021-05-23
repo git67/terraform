@@ -1,0 +1,8 @@
+# vars file for r_configure_auto_update
+---
+yum_daily:
+  cmd: "security"
+  update_messages: "yes"
+  download_updates: "yes"
+  apply_updates: "yes"
+  emit_via: "email"

@@ -1,0 +1,60 @@
+---
+# tasks file for r_create_admin_user
+  - block:
+    - name: "create group, if not available"
+      group:
+        name: "{{ item.value['group']  }}"
+        gid: "{{ item.value['gid'] }}"
+        state: present
+      loop: "{{ admin_user | dict2items }}"
+    
+    - name: "create admin user"
+      user:
+        name: "{{ item.value['name'] }}"
+        uid: "{{ item.value['uid'] }}"
+        group: "{{ item.value['gid'] }}"
+        comment: "{{ item.value['comment'] }}"
+        password: "{{ lookup('file', item.value['password_file']) }}"
+        state: present
+      loop: "{{ admin_user | dict2items }}"
+
+    - name: "put public key to ~/.ssh/authorized_keys"
+      authorized_key:
+        user: "{{ item.value['name'] }}"
+        key: "{{ lookup('file', item.value['pub_key_file']) }}"
+        state: present
+      loop: "{{ admin_user | dict2items }}"
+    
+    - name: "create roles in /etc/sudoers.d"
+      file:
+        path: "/etc/sudoers.d/{{ item.value['sudo_file'] }}"
+        state: touch
+        mode: 0644
+        modification_time: preserve
+        access_time: preserve
+      loop: "{{ admin_user | dict2items }}"
+    
+    - name: "add entry to /etc/sudoers.d role"
+      lineinfile:
+        dest: "/etc/sudoers.d/{{ item.value['sudo_file'] }}"
+        state: present
+        regexp: "^{{ item.value['name'] }}"
+        line: "{{ item.value['sudo_entry'] }}"
+        validate: "visudo -cf %s"
+      loop: "{{ admin_user | dict2items }}"
+    
+    - name: "expire initial password"
+      shell: |
+        A_USER="{{ item.value['name'] }}"
+        chage -d 0 ${A_USER}
+      args:
+        executable: /bin/bash
+      loop: "{{ admin_user | dict2items }}"
+
+    rescue:
+    - fail:
+        msg: "create admin user failed"
+
+    tags:
+    - create_admin_user
+

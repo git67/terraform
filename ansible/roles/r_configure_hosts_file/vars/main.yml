@@ -1,0 +1,3 @@
+---
+# vars file for r_configure_hosts_file
+interface_for_hosts_file: "enp0s3"

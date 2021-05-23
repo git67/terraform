@@ -1,0 +1,20 @@
+###############################################
+# name: r_create_admin_user
+#
+# function:
+# - create admin user at given nodes
+# - distribute public key
+# - create sudo role 
+#
+# dev: heiko stein
+# mail: heiko.stein@etomer.com
+#
+# rel: 0.1
+#
+# ref:
+# - vars/main.yml
+# - files/*  <- public-keys
+#
+# changelog:
+# -
+#################################################
