@@ -1,9 +1,9 @@
-## ansible-bootstrap
+## terraform & ansible
 
-#### create/update your inventory file
-###### (look into ansible.cfg for reference to this file)
+#### The inventory file should already created by terraform 
+###### (if you add some host groups or variables, now you can this)
 ```
-vi inventory/hosts
+vi inventory/inventory
 ```
 
 #### source environment
@@ -13,12 +13,7 @@ alias
 ```
 
 #### create ansible environment at managed nodes 
-###### (keep in mind, you have to know the initial root password of your managed nodes)
 ```
-_ri p_base_configure_ansible.yml
+_create_ansible_user
 ```
 
-#### now you can work complete interaktivly
-```
-_ra <playbook>
-```
