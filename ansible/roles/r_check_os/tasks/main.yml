@@ -9,14 +9,9 @@
 #          - '!any'
 #          - facter
 
-    - name: "probe for rhel/centos"
-      fail:
-        msg: "{{ ansible_host }} doesn't run redhat/centos"
-      when: ('centos' not in ansible_distribution|lower and 'redhat' not in ansible_distribution|lower)
-
     - name: "set runtime distribution flag" 
       set_fact:
-        runtime_dist_flag: "rh-{{ ansible_distribution_major_version }}"
+        runtime_dist_flag: "{{ ansible_distribution|lower }} -{{ ansible_distribution_major_version }}"
 
     - name: "display runtime distribution flag"
       debug:
@@ -24,7 +19,7 @@
       
     rescue:
     - fail:
-        msg: "error: during check 4 rhel"
+        msg: "error: during check node os"
 
     tags:
     - always

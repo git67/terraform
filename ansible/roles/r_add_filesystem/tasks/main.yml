@@ -1,0 +1,46 @@
+---
+# tasks file for roles/r_add_filesystem
+  - block:
+    - name: "create vg {{ vg }}"
+      lvg:
+        pvs: "{{ device }}"
+        vg: "{{ vg }}"
+        force: no
+        state: "present"
+        
+    - name: "create lv {{ lv }}"
+      lvol:
+        vg: "{{ vg }}"
+        lv: "{{ lv }}"
+        size: "{{ size }}"
+        active: yes
+        force: no
+        state: present
+
+    - name: "create fs at /dev/{{ vg }}/{{ lv }}"
+      filesystem:
+        fstype: "{{ fstype }}"
+        dev: "/dev/{{ vg }}/{{ lv }}"
+        force: no
+
+    - name: "create mount directory {{ mountpoint }}"
+      file:
+        path: "{{ mountpoint }}"
+        state: directory
+        mode: 0755
+
+    - name: "mount /dev/{{ vg }}/{{ lv }} at {{ mountpoint }}"
+      mount:
+        path: "{{ mountpoint }}"
+        src: "/dev/{{ vg }}/{{ lv }}"
+        fstype: "{{ fstype }}"
+        opts: rw,nosuid,noexec
+        state: mounted
+
+    rescue:
+    - fail:
+        msg: "add filesystem failed"
+
+    tags:
+    - r_add_filesystem
+

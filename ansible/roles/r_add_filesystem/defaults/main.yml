@@ -1,0 +1,8 @@
+---
+# defaults file for roles/r_add_filesystem
+device: "/dev/sdb"
+fstype: "xfs"
+vg: "apache_vg"
+lv: v1
+size: "100%FREE"
+mountpoint: "/var/www/html"

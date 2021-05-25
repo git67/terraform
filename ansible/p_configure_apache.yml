@@ -1,12 +1,12 @@
 ################################################
 ---
-- name: "configure security stuff at {{ ansible_play_hosts | to_yaml }}"
+- name: "configure apache webserver at {{ ansible_play_hosts | to_yaml }}"
   hosts: "{{ group_name | default('all') }}"
   gather_facts: no
   any_errors_fatal: true
   become: yes
   vars:
-    pl_name: "security"
+    pl_name: "configure_apache"
 
 ################################################
   pre_tasks:
@@ -17,7 +17,7 @@
 
     - name: "role check node os"
       include_role:
-        name: r_check_node_os
+        name: r_check_os
 
     - name: "role create local facts"
       include_role:
@@ -34,31 +34,11 @@
 ################################################
   tasks:
   - block:
-    - name: "role configure firewall"
+    - name: "role add filesystem to apache configuration"
       include_role:
-        name: r_configure_firewall.{{ runtime_dist_flag }}
+        name: r_add_filesystem
       tags: 
-      - configure_firewall
-
-    - name: "role configure selinux"
-      include_role:
-        name: r_configure_selinux
-      tags: 
-      - configure_selinux
-
-    - name: "role configure sysctl"
-      include_role:
-        name: r_configure_sysctl
-      tags: 
-      - configure_sysctl
-
-    - name: "role hardening"
-      include_role:
-        name: r_hardening.{{ runtime_dist_flag }}
-      tags:
-      - hardening_cron
-      - password_policies
-
+      - r_add_filesystem
 
     rescue:
     - fail:

@@ -15,9 +15,9 @@
       include_role:
         name: r_check_availability
 
-    - name: "role check node os 4 rhel"
+    - name: "role check node os"
       include_role:
-        name: r_check_4_rhel
+        name: r_check_os
 
     - name: "role create local facts"
       include_role:
@@ -34,36 +34,6 @@
 ################################################
   tasks:
   - block:
-    - name: "role create admin user"
-      include_role:
-        name: r_create_admin_user
-      tags: 
-      - create_admin_user
-
-    - name: "role configure dns"
-      include_role:
-        name: r_configure_dns
-      tags:
-      - configure_dns
-
-    - name: "role configure ntp service"
-      include_role:
-        name: r_configure_ntp
-      tags: 
-      - configure_ntp
-
-    - name: "role deploy ca"
-      include_role:
-        name: r_deploy_ca
-      tags:
-      - deploy_ca
-
-    - name: "role configure repos"
-      include_role:
-        name: r_configure_linux_repos.{{ runtime_dist_flag }}
-      tags: 
-      - configure_linux_repos
-
     - name: "role configure auto update"
       include_role:
         name: r_configure_auto_update.{{ runtime_dist_flag }}
