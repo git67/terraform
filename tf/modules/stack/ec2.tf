@@ -4,7 +4,8 @@ resource "aws_instance" "dev" {
   instance_type = var.ec2["instance_type"]
 
   count = length(var.subnet_cidrs) * var.ec2["instance_count"]
-  subnet_id = element(aws_subnet.dev.*.id,count.index)
+  #subnet_id = element(aws_subnet.dev.*.id,count.index)
+  subnet_id = element(aws_subnet.dev[*].id,count.index)
 
   vpc_security_group_ids = [aws_security_group.dev.id]
   key_name = aws_key_pair.dev.key_name
