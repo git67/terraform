@@ -20,4 +20,3 @@ resource "aws_instance" "dev" {
     Name = join("_",[var.namespace, "ec2", count.index, element(var.av_zones,count.index) ])
   }
 }
-
