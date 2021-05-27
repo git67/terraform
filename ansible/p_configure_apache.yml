@@ -40,11 +40,11 @@
       tags: 
       - add_filesystem
 
-    - name: "role install apache "
-      include_role:
-        name: r_setup_apache
-      tags: 
-      - setup_apache
+#    - name: "role install apache "
+#      include_role:
+#        name: r_setup_apache
+#      tags: 
+#      - setup_apache
 
     rescue:
     - fail:
