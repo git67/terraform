@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 set -euo pipefail
 
 export PATH="/usr/bin:/usr/sbin/:${PATH}"
@@ -16,7 +16,7 @@ fi
 while true
 do
 	wget -q ${ELB}:${PORT}
-	grep eth0 index.html
+	grep -i address index.html
 	rm index.html*
 done
 }

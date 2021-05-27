@@ -38,7 +38,13 @@
       include_role:
         name: r_add_filesystem
       tags: 
-      - r_add_filesystem
+      - add_filesystem
+
+    - name: "role install apache "
+      include_role:
+        name: r_setup_apache
+      tags: 
+      - setup_apache
 
     rescue:
     - fail:

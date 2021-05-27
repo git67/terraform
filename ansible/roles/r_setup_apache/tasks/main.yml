@@ -1,2 +1,32 @@
 ---
-# tasks file for roles/r_setup_apache
+# tasks file for r_setup_apache 
+  - block:
+    - name: "install apache webserver"
+      yum:
+        name: "httpd"
+        state: present
+
+    - name: "template index.html"
+      template:
+        src: "./files/templates/index.html.j2"
+        dest: "/var/www/html/index.html"
+
+    - name: "set listen port"
+      lineinfile:
+        dest: "{{ apache_config_file }}"
+        regex: "^Listen 80"
+        line: "Listen 8080"
+
+    - name: "take httpd online"
+      service:
+        name: "httpd"
+        state: started
+        enabled: yes
+
+    rescue:
+    - fail:
+        msg: "setup apache failed"
+
+    tags:
+    - setup_apache
+
