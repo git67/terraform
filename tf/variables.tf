@@ -54,7 +54,7 @@ variable "ec2" {
   default = {
     "instance_ami"  = "ami-0a02ee601d742e89f"
     "instance_type"  = "t2.nano"
-    "instance_count" = 4
+    "instance_count" = 1
     "ebs_device" = "/dev/sdb"
     "ebs_vol_size" = 1
     "ebs_vol_type" = "gp2"
