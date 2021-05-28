@@ -5,7 +5,7 @@
 #### - Add cloud watch alarms to every ec2 instance
 #### - Allow public access through tcp/22, tcp/8080
 #### - Configure ELB over all instances (http:8080)
-#### - Add simple first-boot-script called by cloud-init
+#### - Add ansible hook for configuring webservice
 
 
 ## The following steps are necessary:
