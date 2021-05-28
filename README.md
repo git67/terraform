@@ -37,10 +37,9 @@ aws ec2 describe-regions --profile <your-profile-name>
 git clone --branch features/us7 https://github.com/git67/terraform.git ./us7
 ```
 
-#### - Create or copy the needed ssh-keys, follow the instructions
+#### - Create or copy the needed ssh-keys, follow the instructions in ./us7tf/files/keys/README.md
 ```
-cd ./us7/common/keys
-cat .README
+cd ./us7
 ```
 
 #### - Set aws profile data in variables.tf, if it is not the default profile
@@ -68,26 +67,9 @@ terraform apply -auto-approve
 #### - or run terraform without any interaction and some customization to build your environment@aws
 #### - for example create 5 instances per subnet into the stack
 ```
-# terraform apply -var "instance_count=5" -auto-approve
-```
+terraform apply -var 'ec2["instance_count"]=5' -auto-approve
 
-#### - Have a look for public-ip's of ec2-instances and the fqdn of the elb
 ```
-...
-Outputs:
-
-elb_fqdn = "..."
-pub_ec2_public_ip = [
-...
-]
-...
-```
-
-#### - Probe ssh login into an instance (or use the public key given in variables.tf)
-```
-ssh ec2-user@<public_ip>
-```
-
 
 #### - Destroy your environment@aws
 ```

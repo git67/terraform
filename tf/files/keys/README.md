@@ -7,4 +7,5 @@
 ```
 ssh-keygen -t rsa -b 4096 -N "" -C "ec2-user-cloud-init" -f ./ec2-user
 chmod 600 ec2-user && chmod 644 ec2-user.pub
+cp ec2-user* ../../../ansible/files/keys
 ```
