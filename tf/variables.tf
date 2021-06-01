@@ -1,4 +1,4 @@
-# aws profile/aws region
+# aws profile/aws regions
 variable "profile" {
   type = string
   description = "profile aws-cli"
