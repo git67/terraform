@@ -1,4 +1,4 @@
-## AWS Scope (default)
+## AWS Scope (default )
 #### - Create one vpc over 3 availability zones with one within subnet
 #### - Create 1 or more ec2 instance in every subnet
 #### - Add one ebs-device to every ec2 instance
