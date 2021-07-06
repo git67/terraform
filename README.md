@@ -22,7 +22,7 @@ aws --version
 ls ~/.aws
 ```
 
-#### - List configured profile
+#### - List configured aws-cli profile
 ```
 aws configure list --profile <your-profile-name>
 ```
